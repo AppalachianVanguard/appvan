@@ -504,7 +504,43 @@
   }
 
   /* ---------- FAQ accordion ---------- */
-  .faq-list { margin-top: 30px; max-width: 62ch; }
+  .faq-layout {
+    display: flex;
+    gap: 44px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .faq-list { flex: 1 1 380px; max-width: 62ch; margin-top: 0; }
+
+  .faq-figure {
+    flex: 0 0 auto;
+    width: 340px;
+    max-width: 100%;
+  }
+
+  .faq-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    box-shadow: 0 16px 34px rgba(0,0,0,0.32);
+  }
+
+  .faq-figure figcaption {
+    margin-top: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-eyebrow);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 780px) {
+    .faq-figure { margin: 0 auto; }
+  }
 
   details.faq-item {
     border-top: 1px solid var(--line);
@@ -790,7 +826,8 @@
   <span class="eyebrow">FAQ</span>
   <h2>Common questions</h2>
 
-  <div class="faq-list">
+  <div class="faq-layout">
+    <div class="faq-list">
     <details class="faq-item">
       <summary>Is Appalachian Vanguard a registered nonprofit?<span class="faq-icon">+</span></summary>
       <div class="faq-answer">Not yet. We're currently an independent, volunteer-run effort. We may eventually pursue formal 501(c)(3) nonprofit registration depending on the organization's performance/interest.</div>
@@ -820,6 +857,12 @@
       <summary>Can I donate?<span class="faq-icon">+</span></summary>
       <div class="faq-answer">Not at this time, but we greatly appreciate the interest.</div>
     </details>
+    </div>
+
+    <figure class="faq-figure">
+      <img src="assets/trumbull-declaration.jpg" alt="Painting of the drafting committee presenting the Declaration of Independence to Congress" loading="lazy" class="lightbox-trigger">
+      <figcaption>&#8220;Declaration of Independence,&#8221; John Trumbull, 1817&ndash;1819 &mdash; U.S. Capitol Rotunda, public domain</figcaption>
+    </figure>
   </div>
 </section>
 
