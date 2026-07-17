@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>Appalachian Vanguard</title>
+<meta name="description" content="A grassroots effort to preserve Appalachian culture, protect its land, and give our communities a stronger voice in the decisions made about us and for us.">
+
+<!-- Social share preview (shows when the link is texted, posted, or scanned) -->
+<meta property="og:title" content="Appalachian Vanguard">
+<meta property="og:description" content="A grassroots effort to preserve Appalachian culture, protect its land, and give our communities a stronger voice.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMxODE3MTMiLz4KICA8Y2lyY2xlIGN4PSI0NiIgY3k9IjE2IiByPSI2IiBmaWxsPSIjZDliMjNjIi8+CiAgPHBhdGggZD0iTTQgNDYgTDE4IDI4IDI2IDM4IDM0IDIwIDQ2IDQwIDYwIDQ2IEw2MCA1OCBMNCA1OCBaIiBmaWxsPSIjZWNlNGQyIi8+CiAgPHBhdGggZD0iTTQgNTAgTDE4IDM2IDI2IDQ0IDM0IDMwIDQ2IDQ2IDYwIDUwIEw2MCA1OCBMNCA1OCBaIiBmaWxsPSIjMzM1MjNmIi8+Cjwvc3ZnPgo=">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark light;
+    --bg: #181713;
+    --bg-alt: #221f1a;
+    --surface: #33523f;
+    --surface-hover: #3f6350;
+    --text: #ece4d2;
+    --text-muted: #b7c2b8;
+    --text-eyebrow: #d9a94c;
+    --accent: #d9b23c;
+    --line: rgba(255,255,255,0.14);
+    --ridge-1: #4b5a4f;
+    --ridge-2: #33503e;
+    --ridge-3: #22362a;
+    --placeholder-bg: rgba(217,178,60,0.12);
+    --placeholder-border: #b98a4a;
+    --on-surface: #f2ead9;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #eae3d2;
+      --bg-alt: #d9d0ba;
+      --surface: #23362a;
+      --surface-hover: #2f4538;
+      --text: #1c1b18;
+      --text-muted: #2f4538;
+      --text-eyebrow: #7a5a3c;
+      --accent: #c9a227;
+      --line: rgba(28,27,24,0.14);
+      --ridge-1: #8b968c;
+      --ridge-2: #2f4538;
+      --ridge-3: #23362a;
+      --placeholder-bg: rgba(201,162,39,0.14);
+      --placeholder-border: #7a5a3c;
+      --on-surface: #eae3d2;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { background-color: var(--bg); }
+
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 12px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  nav a { text-decoration: none; color: var(--text); }
+  nav a:hover { color: var(--accent); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 640px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    nav ul.open { display: flex; }
+    nav a {
+      display: block;
+      padding: 16px 28px;
+      border-top: 1px solid var(--line);
+    }
+    .nav-toggle { display: inline-block; }
+    header { position: relative; }
+  }
+
+  .ridge-wrap {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+  }
+
+  .ridge-svg { display: block; width: 100%; height: auto; }
+  .ridge-layer-1 { fill: var(--ridge-1); opacity: 0.5; }
+  .ridge-layer-2 { fill: var(--ridge-2); opacity: 0.7; }
+  .ridge-layer-3 { fill: var(--ridge-3); }
+
+  .hero {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 88px 28px 64px;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.02;
+    margin-top: 14px;
+    max-width: 12ch;
+  }
+
+  .hero p.lede {
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin-top: 22px;
+  }
+
+  section.block {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .block h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 6px; }
+  .block .eyebrow { margin-bottom: 10px; display: block; }
+
+  .prose { max-width: 62ch; margin-top: 24px; }
+  .prose p { margin: 0 0 18px; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  .contour-rule { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+  .contour-rule svg { width: 100%; height: 18px; display: block; }
+  .contour-rule path { fill: none; stroke: var(--text-eyebrow); stroke-width: 1; opacity: 0.4; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 36px;
+  }
+
+  @media (max-width: 720px) { .pillars { grid-template-columns: 1fr; } }
+
+  .pillar h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .pillar p { font-size: 16px; color: var(--text-muted); margin: 0; }
+
+  .placeholder {
+    background: var(--placeholder-bg);
+    border: 1px dashed var(--placeholder-border);
+    border-radius: 2px;
+    padding: 20px 22px;
+    margin-top: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .placeholder strong { color: var(--text); }
+
+  .contact-box { margin-top: 28px; display: inline-flex; flex-direction: column; gap: 10px; }
+
+  .contact-email {
+    font-family: 'Space Mono', monospace;
+    font-size: 17px;
+    padding: 12px 18px;
+    background: var(--surface);
+    color: var(--on-surface);
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .contact-email:hover { background: var(--surface-hover); }
+  .contact-note { font-size: 14px; color: var(--text-eyebrow); max-width: 42ch; }
+
+  footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 28px 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-eyebrow);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer-privacy {
+    margin-top: 14px;
+    color: var(--text-eyebrow);
+    opacity: 0.75;
+  }
+
+  /* ---------- Positions layout + flag badge ---------- */
+  .positions-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .positions-layout .prose { flex: 1 1 380px; }
+
+  .flag-badge {
+    flex: 0 0 auto;
+    margin-top: 8px;
+  }
+
+  .flag-badge img {
+    display: block;
+    width: 200px;
+    max-width: 100%;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+    transform: rotate(-2.5deg);
+  }
+
+  .flag-caption {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+    margin-top: 14px;
+    text-align: center;
+    transform: rotate(-2.5deg);
+  }
+
+  @media (max-width: 640px) {
+    .flag-badge { margin: 0 auto; }
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  .faq-list { margin-top: 30px; max-width: 62ch; }
+
+  details.faq-item {
+    border-top: 1px solid var(--line);
+  }
+  details.faq-item:last-child { border-bottom: 1px solid var(--line); }
+
+  details.faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text);
+  }
+
+  details.faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  details.faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+  .faq-answer {
+    padding: 0 0 22px;
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="nav-inner">
+    <div class="wordmark">Appalachian Vanguard</div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
+    <nav>
+      <ul id="navList">
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#history">History &amp; Culture</a></li>
+        <li><a href="#positions">Where We Stand</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="ridge-wrap">
+  <svg class="ridge-svg" viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ridge-layer-1" d="M0,140 L60,120 120,150 190,100 260,135 330,90 410,130 480,105 560,145 640,110 720,140 800,95 880,135 950,115 1000,130 L1000,220 L0,220 Z"/>
+    <path class="ridge-layer-2" d="M0,175 L70,155 140,180 210,140 290,170 360,130 440,165 510,135 590,175 670,145 750,170 830,130 910,165 1000,150 L1000,220 L0,220 Z"/>
+    <path class="ridge-layer-3" d="M0,205 L90,185 170,210 250,175 330,200 420,165 500,200 580,170 670,205 760,175 850,200 940,180 1000,195 L1000,220 L0,220 Z"/>
+  </svg>
+
+  <div class="hero">
+    <span class="eyebrow">Appalachia — Virginia</span>
+    <h1>For the ridge, the hollow, and the people between them.</h1>
+    <p class="lede">Appalachian Vanguard is a grassroots effort to preserve our region's culture, protect its land, and give our communities a stronger voice in the decisions made about us and for us.</p>
+  </div>
+</div>
+
+<section class="block" id="mission">
+  <span class="eyebrow">Mission</span>
+  <h2>Who we are</h2>
+  <div class="prose">
+    <p>We're a group of people from Southwest Virginia who believe Appalachia's story is too often told by outsiders — and too rarely told well. Appalachian Vanguard exists to change that: to document our history honestly, celebrate our culture without caricature, and organize around the issues that actually shape daily life here.</p>
+    <p>We're currently an independent, volunteer-run effort. As this work grows, we intend to formalize as a nonprofit organization so we can support the region more directly — through events, advocacy, and resources for the communities we come from.</p>
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="history">
+  <span class="eyebrow">History &amp; Culture</span>
+  <h2>What we come from</h2>
+  <div class="prose">
+    <p>Central Appalachia's story runs through coal camps and company towns, through the mine wars fought over the right to organize, and through generations who built entire communities around an industry now in steep decline. That history left scars — but it also forged a fierce, practical resilience that still defines the region.</p>
+    <p>It runs through music, too: old-time fiddle and banjo tunes carried over by Scots-Irish and English settlers, reshaped in these hollows into something distinctly ours, and passed down at porch pickin's and church gatherings long before it had a name like "bluegrass." It runs through food — soup beans and cornbread, ramps in spring, canning in the fall — and through a storytelling tradition that treats a good tale as a form of currency.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <h3>Land &amp; Place</h3>
+      <p>Stewardship of the mountains, waterways, and working land that generations of our families have called home.</p>
+    </div>
+    <div class="pillar">
+      <h3>Tradition</h3>
+      <p>Music, craft, dialect, and story — preserved as living practice, not museum pieces.</p>
+    </div>
+    <div class="pillar">
+      <h3>Community</h3>
+      <p>Public events and mutual aid that bring people together across the towns and counties of the region.</p>
+    </div>
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="positions">
+  <span class="eyebrow">Where We Stand</span>
+  <h2>Our positions</h2>
+
+  <div class="positions-layout">
+    <div class="prose">
+      <p>Appalachian Vanguard takes positions on the issues that most directly affect our communities — from land and environmental protection, to cultural preservation, to policy debates unfolding in Richmond and Washington that touch daily life here.</p>
+    </div>
+
+    <div class="flag-badge">
+      <img src="data:image/png;base64,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" alt="Thirteen-star American flag, circular star pattern">
+      <div class="flag-caption">Est. 1777</div>
+    </div>
+  </div>
+
+  <div class="placeholder">
+    <strong>[ EDIT BEFORE PUBLISHING ]</strong><br><br>
+    This section is a placeholder — swap in your actual positions before this goes live. A few structural options to consider:<br><br>
+    — One paragraph per issue area (e.g. land/environment, gun rights, local economic policy)<br>
+    — A short numbered list of core positions<br>
+    — A single unified statement of principles<br><br>
+    Search this file for the text above and replace it with your real content in the same &lt;div class="prose"&gt; structure used elsewhere on the page.
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="faq">
+  <span class="eyebrow">FAQ</span>
+  <h2>Common questions</h2>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Is Appalachian Vanguard a registered nonprofit?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Not yet. We're currently an independent, volunteer-run effort. We intend to pursue formal 501(c)(3) nonprofit registration as the organization grows.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Where does Appalachian Vanguard operate?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">We're based in Southwest Virginia, with a focus on Central Appalachia more broadly.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How can I get involved?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Reach out through the contact email below. We'll share opportunities to help as public events, volunteer roles, and other ways to plug in take shape.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Why doesn't Appalachian Vanguard name its members or leadership?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">We keep the focus on the region and the work rather than any individual. It also protects the privacy of volunteers who are still building this alongside other jobs and commitments.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is my email kept private if I contact you?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Yes. Messages come to a dedicated, private email account and are not shared, sold, or published.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I donate?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Not at this time. We're holding off on accepting donations until nonprofit registration is complete, so we can offer proper tax documentation.</div>
+    </details>
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="contact">
+  <span class="eyebrow">Contact</span>
+  <h2>Get in touch</h2>
+  <div class="prose">
+    <p>Have a question, a story to share, or want to get involved? Reach out by email — we read everything.</p>
+  </div>
+  <div class="contact-box">
+    <a class="contact-email" href="mailto:your-address@protonmail.com">your-address@protonmail.com</a>
+    <span class="contact-note">[ EDIT: replace with your actual ProtonMail address once created ]</span>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-row">
+    <span>Appalachian Vanguard</span>
+    <span>Southwest Virginia</span>
+  </div>
+  <div class="footer-privacy">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var list = document.getElementById('navList');
+  toggle.addEventListener('click', function () {
+    var open = list.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>
+
+<!-- GoatCounter privacy-friendly analytics: no cookies, no personal data.
+     EDIT: replace YOURCODE below with your actual GoatCounter site code once you sign up at goatcounter.com -->
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
