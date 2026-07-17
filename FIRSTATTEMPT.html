@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>Appalachian Vanguard</title>
+<meta name="description" content="A grassroots effort to preserve Appalachian culture, protect its land, and give our communities a stronger voice in the decisions made about us and for us.">
+
+<!-- Social share preview (shows when the link is texted, posted, or scanned) -->
+<meta property="og:title" content="Appalachian Vanguard">
+<meta property="og:description" content="A grassroots effort to preserve Appalachian culture, protect its land, and give our communities a stronger voice.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/positions-flag.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMxODE3MTMiLz4KICA8Y2lyY2xlIGN4PSI0NiIgY3k9IjE2IiByPSI2IiBmaWxsPSIjZDliMjNjIi8+CiAgPHBhdGggZD0iTTQgNDYgTDE4IDI4IDI2IDM4IDM0IDIwIDQ2IDQwIDYwIDQ2IEw2MCA1OCBMNCA1OCBaIiBmaWxsPSIjZWNlNGQyIi8+CiAgPHBhdGggZD0iTTQgNTAgTDE4IDM2IDI2IDQ0IDM0IDMwIDQ2IDQ2IDYwIDUwIEw2MCA1OCBMNCA1OCBaIiBmaWxsPSIjMzM1MjNmIi8+Cjwvc3ZnPgo=">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark light;
+    --bg: #181713;
+    --bg-alt: #221f1a;
+    --surface: #33523f;
+    --surface-hover: #3f6350;
+    --text: #ece4d2;
+    --text-muted: #b7c2b8;
+    --text-eyebrow: #d9a94c;
+    --accent: #d9b23c;
+    --line: rgba(255,255,255,0.14);
+    --ridge-1: #4b5a4f;
+    --ridge-2: #33503e;
+    --ridge-3: #22362a;
+    --placeholder-bg: rgba(217,178,60,0.12);
+    --placeholder-border: #b98a4a;
+    --on-surface: #f2ead9;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #eae3d2;
+      --bg-alt: #d9d0ba;
+      --surface: #23362a;
+      --surface-hover: #2f4538;
+      --text: #1c1b18;
+      --text-muted: #2f4538;
+      --text-eyebrow: #7a5a3c;
+      --accent: #c9a227;
+      --line: rgba(28,27,24,0.14);
+      --ridge-1: #8b968c;
+      --ridge-2: #2f4538;
+      --ridge-3: #23362a;
+      --placeholder-bg: rgba(201,162,39,0.14);
+      --placeholder-border: #7a5a3c;
+      --on-surface: #eae3d2;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { background-color: var(--bg); }
+
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 12px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  nav a { text-decoration: none; color: var(--text); }
+  nav a:hover { color: var(--accent); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 640px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    nav ul.open { display: flex; }
+    nav a {
+      display: block;
+      padding: 16px 28px;
+      border-top: 1px solid var(--line);
+    }
+    .nav-toggle { display: inline-block; }
+    header { position: relative; }
+  }
+
+  .ridge-wrap {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+  }
+
+  .ridge-svg { display: block; width: 100%; height: auto; }
+  .ridge-layer-1 { fill: var(--ridge-1); opacity: 0.5; }
+  .ridge-layer-2 { fill: var(--ridge-2); opacity: 0.7; }
+  .ridge-layer-3 { fill: var(--ridge-3); }
+
+  .hero {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 88px 28px 64px;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.02;
+    margin-top: 14px;
+    max-width: 14ch;
+  }
+
+  .hero p.lede {
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin-top: 22px;
+  }
+
+  section.block {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .block h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 6px; }
+  .block .eyebrow { margin-bottom: 10px; display: block; }
+
+  .prose { max-width: 62ch; margin-top: 24px; }
+  .prose p { margin: 0 0 18px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose p strong { color: var(--text); }
+
+  .contour-rule { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+  .contour-rule svg { width: 100%; height: 18px; display: block; }
+  .contour-rule path { fill: none; stroke: var(--text-eyebrow); stroke-width: 1; opacity: 0.4; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 36px;
+    max-width: 62ch;
+  }
+
+  @media (max-width: 560px) { .pillars { grid-template-columns: 1fr; } }
+
+  .pillar h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .pillar p { font-size: 16px; color: var(--text-muted); margin: 0; }
+
+  .placeholder {
+    background: var(--placeholder-bg);
+    border: 1px dashed var(--placeholder-border);
+    border-radius: 2px;
+    padding: 20px 22px;
+    margin-top: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .placeholder strong { color: var(--text); }
+
+  .contact-box { margin-top: 28px; display: inline-flex; flex-direction: column; gap: 10px; }
+
+  .contact-email {
+    font-family: 'Space Mono', monospace;
+    font-size: 17px;
+    padding: 12px 18px;
+    background: var(--surface);
+    color: var(--on-surface);
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .contact-email:hover { background: var(--surface-hover); }
+  .contact-note { font-size: 14px; color: var(--text-eyebrow); max-width: 42ch; }
+
+  footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 28px 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-eyebrow);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer-privacy {
+    margin-top: 14px;
+    color: var(--text-eyebrow);
+    opacity: 0.75;
+  }
+
+  /* ---------- Positions layout + flag badge ---------- */
+  .positions-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .positions-layout .prose { flex: 1 1 380px; }
+
+  .flag-badge {
+    flex: 0 0 auto;
+    margin-top: 8px;
+  }
+
+  .flag-badge img {
+    display: block;
+    width: 200px;
+    max-width: 100%;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+    transform: rotate(-2.5deg);
+  }
+
+  .flag-caption {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+    margin-top: 14px;
+    text-align: center;
+    transform: rotate(-2.5deg);
+  }
+
+  @media (max-width: 640px) {
+    .flag-badge { margin: 0 auto; }
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  .faq-list { margin-top: 30px; max-width: 62ch; }
+
+  details.faq-item {
+    border-top: 1px solid var(--line);
+  }
+  details.faq-item:last-child { border-bottom: 1px solid var(--line); }
+
+  details.faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text);
+  }
+
+  details.faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  details.faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+  .faq-answer {
+    padding: 0 0 22px;
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="nav-inner">
+    <div class="wordmark">Appalachian Vanguard</div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
+    <nav>
+      <ul id="navList">
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#history">History &amp; Culture</a></li>
+        <li><a href="#positions">Where We Stand</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="ridge-wrap">
+  <svg class="ridge-svg" viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ridge-layer-1" d="M0,140 L60,120 120,150 190,100 260,135 330,90 410,130 480,105 560,145 640,110 720,140 800,95 880,135 950,115 1000,130 L1000,220 L0,220 Z"/>
+    <path class="ridge-layer-2" d="M0,175 L70,155 140,180 210,140 290,170 360,130 440,165 510,135 590,175 670,145 750,170 830,130 910,165 1000,150 L1000,220 L0,220 Z"/>
+    <path class="ridge-layer-3" d="M0,205 L90,185 170,210 250,175 330,200 420,165 500,200 580,170 670,205 760,175 850,200 940,180 1000,195 L1000,220 L0,220 Z"/>
+  </svg>
+
+  <div class="hero">
+    <span class="eyebrow">Appalachia — Virginia</span>
+    <h1>A Nation, not an economic zone.</h1>
+    <p class="lede">Appalachian Vanguard is a grassroots effort to preserve our region's culture, protect its land, and give our communities a stronger voice in the decisions made about us and for us.</p>
+  </div>
+</div>
+
+<section class="block" id="mission">
+  <span class="eyebrow">Mission</span>
+  <h2>Who we are</h2>
+  <div class="prose">
+    <p>We're a group of Heritage Americans who believe Appalachia and her culture is under attack from many fronts, and should be entirely protected.</p>
+    <p>We're currently an independent, volunteer-run effort. If all goes well, we intend to formalize as a nonprofit organization so we can support the region more directly — through events, advocacy, and resources for the communities we come from.</p>
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="history">
+  <span class="eyebrow">History &amp; Culture</span>
+  <h2>What we come from</h2>
+  <div class="prose">
+    <p>Appalachia's story runs through coal camps and historical battlefields, and through generations who contributed unimaginable amounts to the nation, even before it existed. From the Revolution to the Civil War, people from our region are quite literally the "underdogs." Would America be the same had Virginia not existed?</p>
+    <p>It runs through music, too: old-time fiddle and banjo tunes carried over by Scots-Irish and English settlers, reshaped in these hollows into something distinctly ours, and passed down at church gatherings long before it had a name like "bluegrass." It runs through food — soup beans and cornbread, ramps in spring, canning in the fall — and through a storytelling tradition that treats a good tale as a form of currency.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <h3>Land &amp; Place</h3>
+      <p>Stewardship of the mountains, waterways, and working land that generations of our families have called home.</p>
+    </div>
+    <div class="pillar">
+      <h3>Tradition</h3>
+      <p>Music, craft, dialect, and story — preserved as living practice, not museum pieces.</p>
+    </div>
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="positions">
+  <span class="eyebrow">Where We Stand</span>
+  <h2>Our positions</h2>
+
+  <div class="positions-layout">
+    <div class="prose">
+      <p>Appalachian Vanguard takes positions on the issues that most directly affect our communities — from land protection, to cultural preservation, to even politics unfolding in Richmond and Washington.</p>
+      <p>We identify as a Right wing organization, but would passionately reject many of the policies pushed by the Right wing/Modern GOP today.</p>
+      <p><strong>Gun Rights</strong> — We are entirely Pro-2A, with zero exceptions except for laws limiting non-citizens. We vehemently reject Spanberger's gun control bills, and what we see as her severely left wing authoritarianism and her government's efforts to spit on the Constitution.</p>
+      <p><strong>Religion</strong> — We are a Christian organization and view it as both a building block for Western civilization and the United States. We believe America is a Christian nation. Christian belief isn't required for membership, but accepting that we want to spread the Gospel is.</p>
+      <!-- A paragraph on "Citizenship" was in the source draft, defining being American (as distinct from citizenship) in terms of European heritage. That ties national belonging to ancestry rather than a policy position, so it was left out of this build. -->
+      <p><strong>Immigration</strong> — We believe strongly in a nation's ability to determine who enters the country, and believe both in immigration enforcement and drastically lowering the numbers of legal immigration, alongside the abolition of work visas.</p>
+      <p><strong>Foreign Policy</strong> — Although we would hesitate to label ourselves as isolationist, we believe in a true America First foreign policy and in the Monroe Doctrine. We should focus on improving the lives of Americans before we try world policing with nations abroad, and we would support bills to prevent dual citizens from holding public office. We support ending all aid to Israel especially, and believe that AIPAC and its aggressive lobbying needs to be outlawed yesterday.</p>
+      <p><strong>Trump</strong> — We support President Trump's tariff and general economic policies (mostly), but believe he is extremely weak on immigration and is NOT America First because of his submission to Israel. We would also hesitate to label President Trump a Christian.</p>
+    </div>
+
+    <div class="flag-badge">
+      <img src="assets/positions-flag.png" alt="Flag graphic">
+      <div class="flag-caption">Est. 1777</div>
+    </div>
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="faq">
+  <span class="eyebrow">FAQ</span>
+  <h2>Common questions</h2>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Is Appalachian Vanguard a registered nonprofit?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Not yet. We're currently an independent, volunteer-run effort. We may eventually pursue formal 501(c)(3) nonprofit registration depending on the organization's performance/interest.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Where does Appalachian Vanguard operate?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">We're based in Southwest Virginia.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How can I get involved?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Direct membership is limited for now, but reach out through the contact email below.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Why doesn't Appalachian Vanguard name its members or leadership?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">We keep the focus on the region and the work rather than any individual. It also protects the privacy and safety of volunteers who are still building this alongside other jobs and commitments.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is my email kept private if I contact you?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Yes. Messages come to a dedicated, private email account and are not shared, sold, or published.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I donate?<span class="faq-icon">+</span></summary>
+      <div class="faq-answer">Not at this time. We're holding off on accepting donations until we can offer proper tax documentation and allow donations to be tax exempted/deductible.</div>
+    </details>
+  </div>
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="contact">
+  <span class="eyebrow">Contact</span>
+  <h2>Get in touch</h2>
+  <div class="prose">
+    <p>Have a question, a story to share, or want to get involved? Reach out by email — we read everything.</p>
+  </div>
+  <div class="contact-box">
+    <a class="contact-email" href="mailto:appvan@proton.me">appvan@proton.me</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-row">
+    <span>Appalachian Vanguard</span>
+    <span>Southwest Virginia</span>
+  </div>
+  <div class="footer-privacy">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var list = document.getElementById('navList');
+  toggle.addEventListener('click', function () {
+    var open = list.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>
