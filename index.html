@@ -37,12 +37,6 @@
     --placeholder-bg: rgba(217,178,60,0.12);
     --placeholder-border: #b98a4a;
     --on-surface: #f2ead9;
-    --parchment-bg: #e7d7a9;
-    --parchment-bg-alt: #d9c48c;
-    --parchment-ink: #3a2d1c;
-    --parchment-line: rgba(58,45,28,0.3);
-    --seal: #7c2222;
-    --seal-dark: #531414;
   }
 
   @media (prefers-color-scheme: light) {
@@ -481,51 +475,32 @@
   }
 
   /* ---------- Positions layout + flag badge ---------- */
-  .positions-layout {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .positions-layout .prose { flex: 1 1 380px; }
-
-  .flag-badge {
-    flex: 0 0 auto;
-    margin-top: 8px;
-  }
-
-  .flag-badge img {
-    display: block;
-    width: 200px;
-    max-width: 100%;
-    border-radius: 3px;
-    border: 1px solid var(--line);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
-    transform: rotate(-2.5deg);
-  }
-
-  .laurel-wrap {
+  /* ---------- Where We Stand: large watermark flag behind clean text ---------- */
+  #positions {
     position: relative;
-    margin-top: 18px;
-    padding: 10px 0;
-    transform: rotate(-2.5deg);
+    overflow: hidden;
   }
 
-  .flag-caption {
+  .positions-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 820px;
+    max-width: 150%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+    filter: grayscale(1);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #positions .eyebrow,
+  #positions h2,
+  #positions .prose {
     position: relative;
     z-index: 1;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-eyebrow);
-    text-align: center;
-    display: block;
-  }
-
-  @media (max-width: 640px) {
-    .flag-badge { margin: 0 auto; }
   }
 
   /* ---------- FAQ accordion ---------- */
@@ -617,49 +592,26 @@
     mix-blend-mode: overlay;
   }
 
+  /* ---------- Laid-paper linework (mimics 18th-century handmade paper) ---------- */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(120,110,90,0.55) 0px, rgba(120,110,90,0.55) 1px, transparent 1px, transparent 4px),
+      repeating-linear-gradient(0deg, rgba(120,110,90,0.4) 0px, rgba(120,110,90,0.4) 1px, transparent 1px, transparent 92px);
+    opacity: 0.09;
+    mix-blend-mode: overlay;
+  }
+
   /* ---------- Founding-era emblems ---------- */
   .emblem { color: var(--accent); display: block; }
   .emblem-quill { width: 46px; height: 46px; margin: 0 auto; }
   .emblem-laurel { width: 100%; height: auto; position: absolute; top: 50%; left: 0; transform: translateY(-50%); opacity: 0.85; }
 
   .quill-divider { display: flex; justify-content: center; margin-bottom: 22px; }
-
-  /* ---------- Parchment panel (Positions section) ---------- */
-  .parchment-panel {
-    position: relative;
-    color: var(--parchment-ink);
-    background-image:
-      radial-gradient(ellipse at 18% 12%, rgba(255,255,255,0.22), transparent 55%),
-      radial-gradient(ellipse at 85% 88%, rgba(0,0,0,0.14), transparent 55%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.5'/%3E%3C/svg%3E"),
-      linear-gradient(150deg, var(--parchment-bg) 0%, var(--parchment-bg-alt) 100%);
-    border-radius: 3px;
-    padding: 40px 42px;
-    box-shadow: 0 18px 34px rgba(0,0,0,0.35), inset 0 0 50px rgba(90,62,20,0.16);
-    clip-path: polygon(
-      0% 2%, 4% 0%, 9% 1.4%, 14% 0%, 19% 1%, 24% 0%, 29% 1.2%, 34% 0%, 39% 0.8%, 44% 0%, 49% 1%, 54% 0%, 59% 1.1%, 64% 0%, 69% 0.7%, 74% 0%, 79% 1%, 84% 0%, 89% 0.9%, 94% 0%, 100% 1.5%,
-      100% 98.5%, 94% 100%, 89% 98.9%, 84% 100%, 79% 99.1%, 74% 100%, 69% 99%, 64% 100%, 59% 99.1%, 54% 100%, 49% 99%, 44% 100%, 39% 99.2%, 34% 100%, 29% 99%, 24% 100%, 19% 99.2%, 14% 100%, 9% 99%, 4% 100%, 0% 98%
-    );
-  }
-
-  .parchment-panel p { margin: 0 0 16px; }
-  .parchment-panel p:last-child { margin-bottom: 0; }
-  .parchment-panel strong { color: var(--seal); }
-
-  .seal-badge {
-    position: absolute;
-    top: -20px;
-    right: -16px;
-    width: 78px;
-    height: 78px;
-    transform: rotate(-9deg);
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.4));
-  }
-
-  @media (max-width: 640px) {
-    .parchment-panel { padding: 34px 26px; }
-    .seal-badge { width: 60px; height: 60px; top: -14px; right: -10px; }
-  }
 
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -713,15 +665,6 @@
       <path d="M100 118 L92 150 L102 128 Z" fill="currentColor"/>
       <path d="M106 120 L104 154 L110 130 Z" fill="currentColor"/>
       <path d="M112 118 L118 150 L110 128 Z" fill="currentColor"/>
-    </symbol>
-
-    <symbol id="emblem-seal" viewBox="0 0 120 120">
-      <circle cx="60" cy="60" r="52" fill="var(--seal)"/>
-      <circle cx="60" cy="60" r="52" fill="none" stroke="var(--seal-dark)" stroke-width="2"/>
-      <circle cx="60" cy="60" r="43" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" stroke-dasharray="3.5 3.5"/>
-      <path d="M60 33 L65.8 51 84.8 51 69.4 62.3 75.2 80.3 60 69 44.8 80.3 50.6 62.3 35.2 51 54.2 51 Z" fill="rgba(255,255,255,0.92)"/>
-      <path d="M28 94 Q31 108 40 105 Q38 97 32 90 Z" fill="var(--seal)"/>
-      <path d="M90 90 Q98 97 96 106 Q88 104 85 95 Z" fill="var(--seal)"/>
     </symbol>
 
     <path id="star-shape" d="M0,-10 L2.25,-3.09 L9.51,-3.09 L3.63,1.18 L5.88,8.09 L0,3.82 L-5.88,8.09 L-3.63,1.18 L-9.51,-3.09 L-2.25,-3.09 Z" fill="currentColor"/>
@@ -911,29 +854,19 @@
 </div>
 
 <section class="block" id="positions">
+  <img class="positions-watermark" src="assets/flag-betsy-ross.png" alt="" aria-hidden="true" loading="lazy">
   <span class="eyebrow">Where We Stand</span>
   <h2>Our positions</h2>
 
-  <div class="positions-layout">
-    <div class="prose parchment-panel">
-      <svg class="emblem seal-badge"><use href="#emblem-seal"/></svg>
-      <p>Appalachian Vanguard takes positions on many of the issues that most directly affect our communities. Below are just a few of our stances.</p>
-      <p>We identify as a Right wing organization, but would passionately reject many of the policies pushed by the Right wing/Modern GOP today.</p>
-      <p>Gun Rights: We are entirely Pro-2A, with zero exceptions except for laws limiting non-citizens. We vehemently reject Spanberger's gun control bills, and what we see as her severely left wing authoritarianism and her government's efforts to spit on the Constitution.</p>
-      <p>Religion: We are a Christian organization and view it as both a building block for Western civilization and the United States. We believe America is a Christian nation. Christian belief isn't required for membership, but accepting that we want to spread the Gospel is.</p>
-      <!-- A paragraph on "Citizenship" was in the source draft, defining being American (as distinct from citizenship) in terms of European heritage. That ties national belonging to ancestry rather than a policy position, so it was left out of this build. -->
-      <p>Immigration: We believe strongly in a nation's ability to determine who enters the country, and believe both in immigration enforcement and drastically lowering the numbers of legal immigration, alongside the abolition of work visas.</p>
-      <p>Foreign Policy: Although we would hesitate to label ourselves as isolationist, we believe in a true America First foreign policy and in the Monroe Doctrine. We should focus on improving the lives of Americans before we try world policing with nations abroad, and we would support bills to prevent dual citizens from holding public office. We support ending all aid to Israel especially, and believe that AIPAC and its aggressive lobbying needs to be outlawed yesterday.</p>
-      <p>Trump: We support President Trump's tariff and general economic policies (mostly), but believe he is extremely weak on immigration and is NOT America First because of his submission to Israel. We would also hesitate to label President Trump a Christian.</p>
-    </div>
-
-    <div class="flag-badge">
-      <img src="assets/flag-betsy-ross.png" alt="Thirteen-star American flag, circular star pattern" loading="lazy">
-      <div class="laurel-wrap">
-        <svg class="emblem emblem-laurel"><use href="#emblem-laurel"/></svg>
-        <span class="flag-caption">Est. 1777</span>
-      </div>
-    </div>
+  <div class="prose">
+    <p>Appalachian Vanguard takes positions on many of the issues that most directly affect our communities. Below are just a few of our stances.</p>
+    <p>We identify as a Right wing organization, but would passionately reject many of the policies pushed by the Right wing/Modern GOP today.</p>
+    <p>Gun Rights: We are entirely Pro-2A, with zero exceptions except for laws limiting non-citizens. We vehemently reject Spanberger's gun control bills, and what we see as her severely left wing authoritarianism and her government's efforts to spit on the Constitution.</p>
+    <p>Religion: We are a Christian organization and view it as both a building block for Western civilization and the United States. We believe America is a Christian nation. Christian belief isn't required for membership, but accepting that we want to spread the Gospel is.</p>
+    <!-- A paragraph on "Citizenship" was in the source draft, defining being American (as distinct from citizenship) in terms of European heritage. That ties national belonging to ancestry rather than a policy position, so it was left out of this build. -->
+    <p>Immigration: We believe strongly in a nation's ability to determine who enters the country, and believe both in immigration enforcement and drastically lowering the numbers of legal immigration, alongside the abolition of work visas.</p>
+    <p>Foreign Policy: Although we would hesitate to label ourselves as isolationist, we believe in a true America First foreign policy and in the Monroe Doctrine. We should focus on improving the lives of Americans before we try world policing with nations abroad, and we would support bills to prevent dual citizens from holding public office. We support ending all aid to Israel especially, and believe that AIPAC and its aggressive lobbying needs to be outlawed yesterday.</p>
+    <p>Trump: We support President Trump's tariff and general economic policies (mostly), but believe he is extremely weak on immigration and is NOT America First because of his submission to Israel. We would also hesitate to label President Trump a Christian.</p>
   </div>
 </section>
 
