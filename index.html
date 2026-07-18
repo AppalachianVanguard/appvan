@@ -141,9 +141,32 @@
     letter-spacing: 0.015em;
     color: var(--text);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .wordmark:hover { color: var(--accent); }
+
+  .wordmark-tree {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-tree {
+    width: 13px;
+    height: 13px;
+    display: block;
+    flex-shrink: 0;
+  }
 
   nav ul {
     list-style: none;
@@ -721,7 +744,7 @@
 
 <header>
   <div class="nav-inner">
-    <a class="wordmark" href="#">Appalachian Vanguard</a>
+    <a class="wordmark" href="#"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
     <nav>
       <ul id="navList">
@@ -905,7 +928,7 @@
 
 <footer>
   <div class="footer-row">
-    <span>Appalachian Vanguard</span>
+    <span class="footer-brand"><img src="assets/tree-icon.png" alt="" class="footer-tree">Appalachian Vanguard</span>
     <span>Southwest Virginia</span>
   </div>
   <div class="footer-privacy">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
