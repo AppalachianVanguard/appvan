@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>Photos — Appalachian Vanguard</title>
+<meta name="description" content="Community-submitted photos showcasing the culture, land, and beauty of Appalachia.">
+
+<!-- Social share preview (shows when the link is texted, posted, or scanned) -->
+<meta property="og:title" content="Photos — Appalachian Vanguard">
+<meta property="og:description" content="Community-submitted photos showcasing the culture, land, and beauty of Appalachia.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark light;
+    --bg: #181713;
+    --bg-alt: #221f1a;
+    --surface: #33523f;
+    --surface-hover: #3f6350;
+    --text: #ece4d2;
+    --text-muted: #b7c2b8;
+    --text-eyebrow: #d9a94c;
+    --accent: #d9b23c;
+    --line: rgba(255,255,255,0.14);
+    --ridge-1: #4b5a4f;
+    --ridge-2: #33503e;
+    --ridge-3: #22362a;
+    --placeholder-bg: rgba(217,178,60,0.12);
+    --placeholder-border: #b98a4a;
+    --on-surface: #f2ead9;
+    --parchment-bg: #e7d7a9;
+    --parchment-bg-alt: #d9c48c;
+    --parchment-ink: #3a2d1c;
+    --parchment-line: rgba(58,45,28,0.3);
+    --seal: #7c2222;
+    --seal-dark: #531414;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #eae3d2;
+      --bg-alt: #d9d0ba;
+      --surface: #23362a;
+      --surface-hover: #2f4538;
+      --text: #1c1b18;
+      --text-muted: #2f4538;
+      --text-eyebrow: #7a5a3c;
+      --accent: #c9a227;
+      --line: rgba(28,27,24,0.14);
+      --ridge-1: #8b968c;
+      --ridge-2: #2f4538;
+      --ridge-3: #23362a;
+      --placeholder-bg: rgba(201,162,39,0.14);
+      --placeholder-border: #7a5a3c;
+      --on-surface: #eae3d2;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { background-color: var(--bg); }
+
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 12px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .wordmark-tree {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  nav a { text-decoration: none; color: var(--text); }
+  nav a:hover { color: var(--accent); }
+  nav a[aria-current="page"] { color: var(--accent); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 640px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    nav ul.open { display: flex; }
+    nav a {
+      display: block;
+      padding: 16px 28px;
+      border-top: 1px solid var(--line);
+    }
+    .nav-toggle { display: inline-block; }
+    header { position: relative; }
+  }
+
+  .ridge-wrap {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+  }
+
+  .ridge-svg { display: block; width: 100%; height: auto; }
+  .ridge-layer-1 { fill: var(--ridge-1); opacity: 0.5; }
+  .ridge-layer-2 { fill: var(--ridge-2); opacity: 0.7; }
+  .ridge-layer-3 { fill: var(--ridge-3); }
+
+  .hero {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 88px 28px 64px;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.02;
+    margin-top: 14px;
+    max-width: 16ch;
+  }
+
+  .hero-heading-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+
+  .hero-heading-row h1 { margin-top: 0; }
+
+  .hero-emblem {
+    width: 128px;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--accent);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+  }
+
+  @media (max-width: 640px) {
+    .hero-emblem { width: 86px; margin-top: 0; }
+  }
+
+  .hero p.lede {
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin-top: 22px;
+  }
+
+  section.block {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .block h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 6px; }
+  .block .eyebrow { margin-bottom: 10px; display: block; }
+
+  .prose { max-width: 62ch; margin-top: 24px; }
+  .prose p { margin: 0 0 18px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose p strong { color: var(--text); }
+
+  .contour-rule { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+  .contour-rule svg { width: 100%; height: 18px; display: block; }
+  .contour-rule path { fill: none; stroke: var(--text-eyebrow); stroke-width: 1; opacity: 0.4; }
+
+  .placeholder {
+    background: var(--placeholder-bg);
+    border: 1px dashed var(--placeholder-border);
+    border-radius: 2px;
+    padding: 20px 22px;
+    margin-top: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+
+  .placeholder strong { color: var(--text); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .gallery-grid figure {
+    margin: 0;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+    cursor: zoom-in;
+  }
+
+  .gallery-grid figcaption {
+    margin-top: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-eyebrow);
+    line-height: 1.5;
+  }
+
+  .lightbox-trigger {
+    cursor: zoom-in;
+    transition: filter 0.15s ease;
+  }
+  .lightbox-trigger:hover { filter: brightness(1.06); }
+
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(10,9,7,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    cursor: zoom-out;
+    animation: lightbox-fade 0.15s ease;
+  }
+  .lightbox-overlay img {
+    max-width: 92vw;
+    max-height: 88vh;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  @keyframes lightbox-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .contact-box { margin-top: 28px; display: inline-flex; flex-direction: column; gap: 10px; }
+
+  .contact-email {
+    font-family: 'Space Mono', monospace;
+    font-size: 17px;
+    padding: 12px 18px;
+    background: var(--surface);
+    color: var(--on-surface);
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .contact-email:hover { background: var(--surface-hover); }
+
+  footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 28px 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-eyebrow);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer-privacy {
+    margin-top: 14px;
+    color: var(--text-eyebrow);
+    opacity: 0.75;
+  }
+
+  /* ---------- Subtle site-wide paper grain ---------- */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+  }
+
+  /* ---------- Founding-era emblems ---------- */
+  .emblem { color: var(--accent); display: block; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* ---------- Photo submission terms (disclaimer) ---------- */
+  .terms-box {
+    margin-top: 30px;
+    max-width: 62ch;
+    padding: 24px 26px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+  }
+
+  .terms-box h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+    margin-bottom: 14px;
+  }
+
+  .terms-box p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+  }
+  .terms-box p:last-child { margin-bottom: 0; }
+
+  .form-hint {
+    display: block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    opacity: 0.85;
+    max-width: 62ch;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+  <defs>
+  </defs>
+</svg>
+
+<header>
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
+    <nav>
+      <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#mission">Mission</a></li>
+        <li><a href="index.html#history">History &amp; Culture</a></li>
+        <li><a href="index.html#positions">Where We Stand</a></li>
+        <li><a href="photos.html" aria-current="page">Photos</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="ridge-wrap">
+  <svg class="ridge-svg" viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ridge-layer-1" d="M0,140 L60,120 120,150 190,100 260,135 330,90 410,130 480,105 560,145 640,110 720,140 800,95 880,135 950,115 1000,130 L1000,220 L0,220 Z"/>
+    <path class="ridge-layer-2" d="M0,175 L70,155 140,180 210,140 290,170 360,130 440,165 510,135 590,175 670,145 750,170 830,130 910,165 1000,150 L1000,220 L0,220 Z"/>
+    <path class="ridge-layer-3" d="M0,205 L90,185 170,210 250,175 330,200 420,165 500,200 580,170 670,205 760,175 850,200 940,180 1000,195 L1000,220 L0,220 Z"/>
+  </svg>
+
+  <div class="hero">
+    <span class="eyebrow">Community Gallery</span>
+    <div class="hero-heading-row">
+      <h1>Appalachia, through your eyes.</h1>
+      <img src="assets/tree-icon.png" alt="" class="hero-emblem">
+    </div>
+    <p class="lede">A visual record of the land, the people, and the culture that make this region what it is — built from photos submitted by the community.</p>
+  </div>
+</div>
+
+<section class="block" id="gallery">
+  <span class="eyebrow">Gallery</span>
+  <h2>From the community</h2>
+  <div class="prose">
+    <p>Every photo here was sent in by someone who calls Appalachia home.</p>
+  </div>
+
+  <!-- AUTO-GALLERY:START (generated by scripts/generate_gallery.py — don't hand-edit this block; add photos to assets/photos/ instead) -->
+  <div class="placeholder">
+    <strong>Coming soon.</strong> Submitted photos will be reviewed and added here over time. Check back soon — or be the first to share one below.
+  </div>
+  <!-- AUTO-GALLERY:END -->
+</section>
+
+<div class="contour-rule">
+  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
+</div>
+
+<section class="block" id="submit">
+  <span class="eyebrow">Share a Photo</span>
+  <h2>Submit yours</h2>
+  <div class="prose">
+    <p>Have a photo that captures something true about this region — a foggy ridge line, a county fair, a front porch, an old barn, a church homecoming? We'd love to feature it here.</p>
+  </div>
+
+  <div class="terms-box">
+    <h3>Photo Submission Terms</h3>
+    <p>By submitting a photo, you confirm that you took it yourself or otherwise have the right to share it, and you grant Appalachian Vanguard a non-exclusive, royalty-free, perpetual license to display, reproduce, and share it on this website and our other public channels — solely for the purpose of showcasing the region's culture and beauty.</p>
+    <p>You keep ownership of your photo. This is permission to use it, not a transfer of copyright. We may crop, resize, or caption submissions for consistency, and we reserve the right to decline or remove any submission at our discretion.</p>
+    <p>Please don't submit photos of private individuals without their consent, or images you don't have the right to share.</p>
+  </div>
+
+  <div class="prose">
+    <p>Submissions go straight to our inbox. Click below to open an email already addressed and pre-filled — just attach your photo and hit send.</p>
+  </div>
+
+  <div class="contact-box">
+    <a class="contact-email" href="mailto:appvan@proton.me?subject=Photo%20Submission&amp;body=Please%20attach%20your%20photo%20to%20this%20email.%0A%0ACaption%20or%20location%20(optional)%3A%0AName%20to%20credit%20(optional%2C%20leave%20blank%20to%20stay%20anonymous)%3A%0A%0ABy%20sending%20this%20photo%2C%20I%20agree%20to%20the%20Photo%20Submission%20Terms%20above.">appvan@proton.me</a>
+  </div>
+  <span class="form-hint">Opens in your email app. No account, sign-up, or third-party site involved — it's a normal email, with your photo as an attachment.</span>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-row">
+    <span>Appalachian Vanguard</span>
+    <span>Southwest Virginia</span>
+  </div>
+  <div class="footer-privacy">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var list = document.getElementById('navList');
+  toggle.addEventListener('click', function () {
+    var open = list.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.querySelectorAll('.lightbox-trigger').forEach(function (img) {
+    img.addEventListener('click', function () {
+      var overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      var big = document.createElement('img');
+      big.src = img.src;
+      big.alt = img.alt;
+      overlay.appendChild(big);
+      overlay.addEventListener('click', function () { overlay.remove(); });
+      document.addEventListener('keydown', function escClose(e) {
+        if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', escClose); }
+      });
+      document.body.appendChild(overlay);
+    });
+  });
+</script>
+
+<!-- GoatCounter privacy-friendly analytics: no cookies, no personal data.
+     EDIT: replace YOURCODE below with your actual GoatCounter site code once you sign up at goatcounter.com -->
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
