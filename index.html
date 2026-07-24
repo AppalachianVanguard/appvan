@@ -122,7 +122,7 @@
   .nav-inner {
     max-width: 980px;
     margin: 0 auto;
-    padding: 18px 28px;
+    padding: 14px 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,13 +131,15 @@
   .wordmark {
     font-family: 'IM Fell English', serif;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 21px;
     letter-spacing: 0.015em;
     color: var(--text);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .wordmark:hover { color: var(--accent); }
@@ -165,16 +167,16 @@
   nav ul {
     list-style: none;
     display: flex;
-    gap: 28px;
+    gap: 16px;
     margin: 0;
     padding: 0;
     font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
-  nav a { text-decoration: none; color: var(--text); }
+  nav a { text-decoration: none; color: var(--text); white-space: nowrap; }
   nav a:hover { color: var(--accent); }
 
   .nav-toggle {
@@ -616,74 +618,6 @@
     .faq-figure { margin: 0 auto; }
   }
 
-  /* ---------- Resources: book recommendations ---------- */
-  .book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
-    max-width: 780px;
-  }
-
-  .book-card {
-    background: var(--bg-alt);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
-    border-radius: 3px;
-    padding: 22px 24px;
-  }
-
-  .book-title {
-    font-size: 19px;
-    line-height: 1.25;
-    margin-bottom: 4px;
-  }
-
-  .book-author {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: var(--text-eyebrow);
-    margin: 0 0 14px;
-  }
-
-  .book-rating {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px;
-    font-size: 14px;
-    color: var(--text-muted);
-    margin: 0 0 14px;
-  }
-
-  .book-rating .stars {
-    color: var(--accent);
-    letter-spacing: 1px;
-    font-size: 13px;
-  }
-
-  .book-rating .rating-count {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    opacity: 0.85;
-  }
-
-  .book-blurb {
-    font-size: 15px;
-    color: var(--text-muted);
-    margin: 0 0 18px;
-  }
-
-  .book-link {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.03em;
-    text-decoration: none;
-    color: var(--accent);
-  }
-  .book-link:hover { text-decoration: underline; }
-
   details.faq-item {
     border-top: 1px solid var(--line);
   }
@@ -857,7 +791,7 @@
         <li><a href="#positions">Where We Stand</a></li>
         <li><a href="photos.html">Photos</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#resources">Resources</a></li>
+        <li><a href="resources.html">Resources</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -1089,60 +1023,6 @@
       <img src="assets/trumbull-declaration.jpg" alt="Painting of the drafting committee presenting the Declaration of Independence to Congress" loading="lazy" class="lightbox-trigger">
       <figcaption>&#8220;Declaration of Independence,&#8221; John Trumbull, 1817&ndash;1819 &mdash; U.S. Capitol Rotunda, public domain</figcaption>
     </figure>
-  </div>
-</section>
-
-<div class="contour-rule">
-  <svg viewBox="0 0 1000 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 L100,4 200,13 300,6 400,11 500,3 600,12 700,7 800,10 900,5 1000,9"/></svg>
-</div>
-
-<section class="block" id="resources">
-  <span class="eyebrow">Resources</span>
-  <h2>Books on Appalachian history</h2>
-  <div class="prose">
-    <p>A short reading list on the region's history and culture, for anyone who wants to go deeper.</p>
-  </div>
-
-  <!--
-    HOW TO ADD A BOOK:
-    Copy one entire <article class="book-card">...</article> block below
-    (from <article to </article>) and paste it right before the closing
-    </div> of .book-grid. Then just edit the six lines inside your new
-    copy: title, author, stars, rating text, count, blurb, and the href.
-
-    - Star display: "★★★★★" = 5 filled stars. For a 4.4-star book, keep
-      it at "★★★★★" (rounds up) — the number just after it does the
-      precise reporting, e.g. "4.4 out of 5".
-    - Always link straight to the book's real Amazon product page.
-  -->
-  <div class="book-grid">
-
-    <article class="book-card">
-      <h3 class="book-title">Appalachia: A History</h3>
-      <p class="book-author">John Alexander Williams</p>
-      <p class="book-rating">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <span>4.4 out of 5</span>
-        <span class="rating-count">(98 ratings)</span>
-      </p>
-      <p class="book-blurb">The standard one-volume history of the region — four and a half centuries of land, people, and culture, from the colonial era through today.</p>
-      <a class="book-link" href="https://amzn.to/4yBvEbH" target="_blank" rel="noopener">View on Amazon &rarr;</a>
-    </article>
-
-    <article class="book-card">
-      <h3 class="book-title">The Foxfire Book</h3>
-      <p class="book-author">Eliot Wigginton (Editor)</p>
-      <p class="book-rating">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <span>4.8 out of 5</span>
-        <span class="rating-count">(1,268 ratings)</span>
-      </p>
-      <p class="book-blurb">A beloved bestseller that preserves Appalachian oral history, folk medicine, music, and mountain crafts in the words of the people who kept them alive.</p>
-      <a class="book-link" href="https://amzn.to/4vRvL09" target="_blank" rel="noopener">View on Amazon &rarr;</a>
-    </article>
-
-    <!-- Paste additional <article class="book-card"> blocks here -->
-
   </div>
 </section>
 
