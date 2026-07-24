@@ -128,7 +128,7 @@
   .nav-inner {
     max-width: 980px;
     margin: 0 auto;
-    padding: 18px 28px;
+    padding: 14px 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,13 +137,15 @@
   .wordmark {
     font-family: 'IM Fell English', serif;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 21px;
     letter-spacing: 0.015em;
     color: var(--text);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .wordmark:hover { color: var(--accent); }
@@ -158,16 +160,16 @@
   nav ul {
     list-style: none;
     display: flex;
-    gap: 28px;
+    gap: 16px;
     margin: 0;
     padding: 0;
     font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
-  nav a { text-decoration: none; color: var(--text); }
+  nav a { text-decoration: none; color: var(--text); white-space: nowrap; }
   nav a:hover { color: var(--accent); }
   nav a[aria-current="page"] { color: var(--accent); }
 
@@ -470,7 +472,7 @@
         <li><a href="index.html#positions">Where We Stand</a></li>
         <li><a href="photos.html" aria-current="page">Photos</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="index.html#resources">Resources</a></li>
+        <li><a href="resources.html">Resources</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </nav>
@@ -555,6 +557,9 @@
     });
   });
 </script>
+
+<script data-goatcounter="https://appva.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
