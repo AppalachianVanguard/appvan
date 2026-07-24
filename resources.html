@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>Resources — Appalachian Vanguard</title>
+<meta name="description" content="A short reading list on Appalachian history and culture.">
+
+<!-- Social share preview (shows when the link is texted, posted, or scanned) -->
+<meta property="og:title" content="Resources — Appalachian Vanguard">
+<meta property="og:description" content="A short reading list on Appalachian history and culture.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IM+Fell+English:ital@0;1&family=Source+Serif+4:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark light;
+    --bg: #181713;
+    --bg-alt: #221f1a;
+    --surface: #33523f;
+    --surface-hover: #3f6350;
+    --text: #ece4d2;
+    --text-muted: #b7c2b8;
+    --text-eyebrow: #d9a94c;
+    --accent: #d9b23c;
+    --line: rgba(255,255,255,0.14);
+    --on-surface: #f2ead9;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #eae3d2;
+      --bg-alt: #d9d0ba;
+      --surface: #23362a;
+      --surface-hover: #2f4538;
+      --text: #1c1b18;
+      --text-muted: #2f4538;
+      --text-eyebrow: #7a5a3c;
+      --accent: #c9a227;
+      --line: rgba(28,27,24,0.14);
+      --on-surface: #eae3d2;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { background-color: var(--bg); }
+
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 12px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .wordmark {
+    font-family: 'IM Fell English', serif;
+    font-weight: 400;
+    font-size: 21px;
+    letter-spacing: 0.015em;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .wordmark:hover { color: var(--accent); }
+
+  .wordmark-tree {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  nav a { text-decoration: none; color: var(--text); white-space: nowrap; }
+  nav a:hover { color: var(--accent); }
+  nav a[aria-current="page"] { color: var(--accent); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 640px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    nav ul.open { display: flex; }
+    nav a {
+      display: block;
+      padding: 16px 28px;
+      border-top: 1px solid var(--line);
+    }
+    .nav-toggle { display: inline-block; }
+    header { position: relative; }
+  }
+
+  section.block {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 28px;
+  }
+
+  .block h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 6px; }
+  .block .eyebrow { margin-bottom: 10px; display: block; }
+
+  .prose { max-width: 62ch; margin-top: 24px; }
+  .prose p { margin: 0 0 18px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose p strong { color: var(--text); }
+
+  /* ---------- Resources: book recommendations ---------- */
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+    max-width: 780px;
+  }
+
+  .book-card {
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+    padding: 22px 24px;
+  }
+
+  .book-title {
+    font-size: 19px;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+
+  .book-author {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-eyebrow);
+    margin: 0 0 14px;
+  }
+
+  .book-rating {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+  }
+
+  .book-rating .stars {
+    color: var(--accent);
+    letter-spacing: 1px;
+    font-size: 13px;
+  }
+
+  .book-rating .rating-count {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    opacity: 0.85;
+  }
+
+  .book-blurb {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0 0 18px;
+  }
+
+  .book-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: var(--accent);
+  }
+  .book-link:hover { text-decoration: underline; }
+
+  footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 28px 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-eyebrow);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer-privacy {
+    margin-top: 14px;
+    color: var(--text-eyebrow);
+    opacity: 0.75;
+  }
+
+  /* ---------- Subtle site-wide paper grain ---------- */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+  }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
+    <nav>
+      <ul id="navList">
+        <li><a href="index.html#mission">Mission</a></li>
+        <li><a href="index.html#history">History &amp; Culture</a></li>
+        <li><a href="index.html#positions">Where We Stand</a></li>
+        <li><a href="photos.html">Photos</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="resources.html" aria-current="page">Resources</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="block" id="resources">
+  <span class="eyebrow">Resources</span>
+  <h2>Books on Appalachian history</h2>
+  <div class="prose">
+    <p>A short reading list on the region's history and culture, for anyone who wants to go deeper.</p>
+  </div>
+
+  <!--
+    HOW TO ADD A BOOK:
+    Copy one entire <article class="book-card">...</article> block below
+    (from <article to </article>) and paste it right before the closing
+    </div> of .book-grid. Then just edit the lines inside your new copy:
+    title, author, stars, rating text, count, blurb, and the href.
+
+    - Star display: "★★★★★" = 5 filled stars. For a 4.4-star book, keep
+      it at "★★★★★" (rounds up) — the number just after it does the
+      precise reporting, e.g. "4.4 out of 5".
+    - Always link straight to the book's real Amazon product page.
+  -->
+  <div class="book-grid">
+
+    <article class="book-card">
+      <h3 class="book-title">Appalachia: A History</h3>
+      <p class="book-author">John Alexander Williams</p>
+      <p class="book-rating">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span>4.4 out of 5</span>
+        <span class="rating-count">(98 ratings)</span>
+      </p>
+      <p class="book-blurb">The standard one-volume history of the region — four and a half centuries of land, people, and culture, from the colonial era through today.</p>
+      <a class="book-link" href="https://amzn.to/4yBvEbH" target="_blank" rel="noopener">View on Amazon &rarr;</a>
+    </article>
+
+    <article class="book-card">
+      <h3 class="book-title">The Foxfire Book</h3>
+      <p class="book-author">Eliot Wigginton (Editor)</p>
+      <p class="book-rating">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span>4.8 out of 5</span>
+        <span class="rating-count">(1,268 ratings)</span>
+      </p>
+      <p class="book-blurb">A beloved bestseller that preserves Appalachian oral history, folk medicine, music, and mountain crafts in the words of the people who kept them alive.</p>
+      <a class="book-link" href="https://amzn.to/4vRvL09" target="_blank" rel="noopener">View on Amazon &rarr;</a>
+    </article>
+
+    <!-- Paste additional <article class="book-card"> blocks here -->
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-row">
+    <span>Appalachian Vanguard</span>
+    <span>Southwest Virginia</span>
+  </div>
+  <div class="footer-privacy">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var list = document.getElementById('navList');
+  toggle.addEventListener('click', function () {
+    var open = list.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>
+
+<script data-goatcounter="https://appva.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
