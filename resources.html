@@ -4,17 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#181713">
 <title>Resources — Appalachian Vanguard</title>
 <meta name="description" content="A short reading list on Appalachian history and culture.">
+
+<!-- Applies a saved light/dark preference before first paint, to avoid a flash of the wrong theme -->
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('av-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
 
 <!-- Social share preview (shows when the link is texted, posted, or scanned) -->
 <meta property="og:title" content="Resources — Appalachian Vanguard">
 <meta property="og:description" content="A short reading list on Appalachian history and culture.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/og-image.png">
+<meta property="og:url" content="https://REPLACE-WITH-YOUR-DOMAIN/resources.html">
+<meta property="og:image" content="https://REPLACE-WITH-YOUR-DOMAIN/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="alternate icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +61,33 @@
       --line: rgba(28,27,24,0.14);
       --on-surface: #eae3d2;
     }
+  }
+
+  /* Manual theme toggle overrides — take priority over the system preference above */
+  :root[data-theme="dark"] {
+    --bg: #181713;
+    --bg-alt: #221f1a;
+    --surface: #33523f;
+    --surface-hover: #3f6350;
+    --text: #ece4d2;
+    --text-muted: #b7c2b8;
+    --text-eyebrow: #d9a94c;
+    --accent: #d9b23c;
+    --line: rgba(255,255,255,0.14);
+    --on-surface: #f2ead9;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #eae3d2;
+    --bg-alt: #d9d0ba;
+    --surface: #23362a;
+    --surface-hover: #2f4538;
+    --text: #1c1b18;
+    --text-muted: #2f4538;
+    --text-eyebrow: #7a5a3c;
+    --accent: #c9a227;
+    --line: rgba(28,27,24,0.14);
+    --on-surface: #eae3d2;
   }
 
   * { box-sizing: border-box; }
@@ -170,6 +211,62 @@
     padding: 8px 14px;
     cursor: pointer;
   }
+
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+  .theme-icon {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .theme-icon-sun { display: block; }
+  .theme-icon-moon { display: none; fill: currentColor; stroke: none; }
+
+  .back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 30;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--on-surface);
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+  .back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+  .back-to-top:hover { background: var(--surface-hover); }
+  @media (prefers-reduced-motion: reduce) { .back-to-top { transition: none; } }
 
   @media (max-width: 640px) {
     nav ul {
@@ -320,18 +417,24 @@
 <header>
   <div class="nav-inner">
     <a class="wordmark" href="index.html"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
-    <nav>
-      <ul id="navList">
-        <li><a href="index.html#mission">Mission</a></li>
-        <li><a href="index.html#history">History &amp; Culture</a></li>
-        <li><a href="index.html#positions">Where We Stand</a></li>
-        <li><a href="photos.html">Photos</a></li>
-        <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="resources.html" aria-current="page">Resources</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-controls">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.7A8 8 0 1 1 9.3 4a6.4 6.4 0 0 0 10.7 10.7z"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
+      <nav>
+        <ul id="navList">
+          <li><a href="index.html#mission">Mission</a></li>
+          <li><a href="index.html#history">History &amp; Culture</a></li>
+          <li><a href="index.html#positions">Where We Stand</a></li>
+          <li><a href="photos.html">Photos</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="resources.html" aria-current="page">Resources</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -397,12 +500,49 @@
   <div class="footer-privacy">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
 </footer>
 
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">&uarr;</button>
+
 <script>
   var toggle = document.getElementById('navToggle');
   var list = document.getElementById('navList');
   toggle.addEventListener('click', function () {
     var open = list.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Manual light/dark theme toggle
+  var themeToggle = document.getElementById('themeToggle');
+  var rootEl = document.documentElement;
+  function currentTheme() {
+    var explicit = rootEl.getAttribute('data-theme');
+    if (explicit) return explicit;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+  function applyToggleState() {
+    var isLight = currentTheme() === 'light';
+    themeToggle.setAttribute('aria-pressed', String(isLight));
+    themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+    themeToggle.querySelector('.theme-icon-sun').style.display = isLight ? 'none' : 'block';
+    themeToggle.querySelector('.theme-icon-moon').style.display = isLight ? 'block' : 'none';
+  }
+  applyToggleState();
+  themeToggle.addEventListener('click', function () {
+    var next = currentTheme() === 'light' ? 'dark' : 'light';
+    rootEl.setAttribute('data-theme', next);
+    try { localStorage.setItem('av-theme', next); } catch (e) {}
+    applyToggleState();
+  });
+
+  // Back-to-top button
+  var backToTop = document.getElementById('backToTop');
+  function toggleBackToTop() {
+    if (window.scrollY > 480) backToTop.classList.add('is-visible');
+    else backToTop.classList.remove('is-visible');
+  }
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  toggleBackToTop();
+  backToTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
 
