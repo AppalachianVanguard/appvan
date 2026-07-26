@@ -29,6 +29,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="alternate icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -478,6 +479,9 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox-overlay { animation: none; }
+  }
 
   .contact-box { margin-top: 28px; display: inline-flex; flex-direction: column; gap: 10px; }
 
@@ -632,7 +636,7 @@
   <span class="eyebrow">Share a Photo</span>
   <h2>Submit yours</h2>
   <div class="prose">
-    <p>Have a photo that captures something true about this region — a foggy ridge line, a county fair, a front porch, an old barn, a church homecoming? We'd love to feature it here.</p>
+    <p>Have a photo that captures something true about this region? We'd love to feature it here.</p>
   </div>
 
   <div class="terms-box">
@@ -658,19 +662,38 @@
   <div class="footer-privacy footer-fineprint">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
 </footer>
 
-<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">&uarr;</button>
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
 
 <script>
   var toggle = document.getElementById('navToggle');
   var list = document.getElementById('navList');
-  toggle.addEventListener('click', function () {
+  function closeMobileNav() {
+    if (list.classList.contains('open')) {
+      list.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Menu';
+    }
+  }
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
     var open = list.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.textContent = open ? 'Close' : 'Menu';
+  });
+  document.addEventListener('click', function (e) {
+    if (list.classList.contains('open') && !list.contains(e.target) && e.target !== toggle) {
+      closeMobileNav();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMobileNav();
   });
 
   // Manual light/dark theme toggle
   var themeToggle = document.getElementById('themeToggle');
   var rootEl = document.documentElement;
+  var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  var THEME_COLORS = { dark: '#181713', light: '#eae3d2' };
   function currentTheme() {
     var explicit = rootEl.getAttribute('data-theme');
     if (explicit) return explicit;
@@ -678,10 +701,13 @@
   }
   function applyToggleState() {
     var isLight = currentTheme() === 'light';
+    var label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
     themeToggle.setAttribute('aria-pressed', String(isLight));
-    themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
     themeToggle.querySelector('.theme-icon-sun').style.display = isLight ? 'none' : 'block';
     themeToggle.querySelector('.theme-icon-moon').style.display = isLight ? 'block' : 'none';
+    if (themeColorMeta) themeColorMeta.setAttribute('content', THEME_COLORS[isLight ? 'light' : 'dark']);
   }
   applyToggleState();
   themeToggle.addEventListener('click', function () {
