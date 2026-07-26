@@ -576,6 +576,42 @@
     opacity: 0.85;
     max-width: 62ch;
   }
+
+  .contact-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .copy-email-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 11px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .copy-email-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .copy-email-btn.is-copied { border-color: var(--accent); color: var(--accent); }
+
+  .inapp-notice {
+    display: none;
+    margin-top: 18px;
+    max-width: 62ch;
+    padding: 16px 18px;
+    background: var(--placeholder-bg);
+    border: 1px dashed var(--placeholder-border);
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .inapp-notice.is-visible { display: block; }
 </style>
 </head>
 <body>
@@ -651,7 +687,13 @@
   </div>
 
   <div class="contact-box">
-    <a class="contact-email" href="mailto:appvan@proton.me?subject=Photo%20Submission&amp;body=Please%20attach%20your%20photo%20to%20this%20email.%0A%0ACaption%20or%20location%20%28optional%29%3A%0AName%20to%20credit%20%28optional%2C%20leave%20blank%20to%20stay%20anonymous%29%3A%0A%0ABy%20sending%20this%20photo%2C%20I%20agree%20to%20the%20Photo%20Submission%20Terms%20above.">appvan@proton.me</a>
+    <div class="contact-actions">
+      <a class="contact-email" href="mailto:appvan@proton.me?subject=Photo%20Submission&amp;body=Please%20attach%20your%20photo%20to%20this%20email.%0A%0ACaption%20or%20location%20%28optional%29%3A%0AName%20to%20credit%20%28optional%2C%20leave%20blank%20to%20stay%20anonymous%29%3A%0A%0ABy%20sending%20this%20photo%2C%20I%20agree%20to%20the%20Photo%20Submission%20Terms%20above.">appvan@proton.me</a>
+      <button type="button" class="copy-email-btn" id="copyEmailBtn" data-email="appvan@proton.me">Copy email address</button>
+    </div>
+    <div class="inapp-notice" id="inAppNotice">
+      This page may have opened inside another app's built-in browser, which sometimes can't hand off to your email app. Look for a &ldquo;&bull;&bull;&bull;&rdquo; or share icon at the top of the screen and choose &ldquo;Open in Safari&rdquo; or &ldquo;Open in Chrome,&rdquo; then try again — or just use the Copy button above and paste the address into your own email app.
+    </div>
   </div>
   <span class="form-hint">Opens in your email app. No account, sign-up, or third-party site involved — it's a normal email, with your photo as an attachment.</span>
 </section>
@@ -744,6 +786,55 @@
       document.body.appendChild(overlay);
     });
   });
+
+  // Flag likely in-app browsers (Instagram, Facebook, TikTok, etc.) that often
+  // can't hand mailto: links off to a real email app, and surface a workaround.
+  (function () {
+    var ua = navigator.userAgent || '';
+    var isInAppBrowser = /FBAN|FBAV|Instagram|Line\/|MicroMessenger|TikTok|BytedanceWebview|Snapchat/i.test(ua);
+    if (isInAppBrowser) {
+      var notice = document.getElementById('inAppNotice');
+      if (notice) notice.classList.add('is-visible');
+    }
+
+    var copyBtn = document.getElementById('copyEmailBtn');
+    if (!copyBtn) return;
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    function showCopied() {
+      var original = copyBtn.textContent;
+      copyBtn.textContent = 'Copied!';
+      copyBtn.classList.add('is-copied');
+      setTimeout(function () {
+        copyBtn.textContent = original;
+        copyBtn.classList.remove('is-copied');
+      }, 2000);
+    }
+
+    copyBtn.addEventListener('click', function () {
+      var email = copyBtn.getAttribute('data-email');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(showCopied, function () {
+          fallbackCopy(email);
+          showCopied();
+        });
+      } else {
+        fallbackCopy(email);
+        showCopied();
+      }
+    });
+  })();
 </script>
 
 <script data-goatcounter="https://appva.goatcounter.com/count"
