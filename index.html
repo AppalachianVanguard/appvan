@@ -606,6 +606,17 @@
   }
   .footer-verse .verse-ref { margin-top: 4px; }
 
+  .footer-verse-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .footer-verse-row .footer-verse { margin: 0; }
+  .footer-verse-row .footer-tree { margin-top: 3px; }
+
+  .footer-fineprint { font-size: 9px; }
+
   .contact-box { margin-top: 28px; display: inline-flex; flex-direction: column; gap: 10px; }
 
   .contact-email {
@@ -1159,15 +1170,14 @@
 </main>
 
 <footer>
-  <div class="footer-row">
-    <span class="footer-brand"><img src="assets/tree-icon.png" alt="" class="footer-tree">Appalachian Vanguard</span>
-    <span>Southwest Virginia</span>
-  </div>
-  <div class="footer-privacy">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+  <div class="footer-privacy footer-fineprint">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
   <div class="footer-privacy">&copy; 2026 Appalachian Vanguard. All rights reserved.</div>
-  <div class="verse-placeholder footer-verse">
-    &#8220;He has made everything beautiful in its time.&#8221;
-    <span class="verse-ref">Ecclesiastes 3:11</span>
+  <div class="footer-verse-row">
+    <img src="assets/tree-icon.png" alt="" class="footer-tree">
+    <div class="verse-placeholder footer-verse">
+      &#8220;He has made everything beautiful in its time.&#8221;
+      <span class="verse-ref">Ecclesiastes 3:11</span>
+    </div>
   </div>
 </footer>
 
