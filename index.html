@@ -29,6 +29,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="alternate icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -506,6 +507,9 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox-overlay { animation: none; }
+  }
 
   .mission-layout {
     display: flex;
@@ -591,6 +595,20 @@
     color: var(--text-eyebrow);
     opacity: 0.9;
   }
+
+  .hero-cta {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 12px 22px;
+    background: var(--surface);
+    color: var(--on-surface);
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+  .hero-cta:hover { background: var(--surface-hover); }
 
   .hero-verse {
     margin-top: 26px;
@@ -1023,9 +1041,10 @@
         <span class="eyebrow">Appalachia — Virginia</span>
         <div class="hero-heading-row">
           <h1>A nation, not an economic zone.</h1>
-          <svg class="emblem hero-eagle" viewBox="0 0 100 100" width="100" height="100"><use href="#emblem-stars-circle"/></svg>
+          <svg class="emblem hero-eagle" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true"><use href="#emblem-stars-circle"/></svg>
         </div>
         <p class="lede">Appalachian Vanguard is a local effort to preserve our region's culture and to protect its land, both physically and politically.</p>
+        <a class="hero-cta" href="#contact">Get Involved &rarr;</a>
         <div class="verse-placeholder hero-verse">
           &#8220;For freedom Christ has set us free; stand firm therefore...&#8221;
           <span class="verse-ref">Galatians 5:1</span>
@@ -1058,7 +1077,7 @@
 
 <section class="block" id="history">
   <div class="section-divider-icon">
-    <svg class="emblem-steeple-small" viewBox="0 0 100 140" width="100" height="140"><use href="#emblem-steeple"/></svg>
+    <svg class="emblem-steeple-small" viewBox="0 0 100 140" width="100" height="140" aria-hidden="true"><use href="#emblem-steeple"/></svg>
   </div>
   <span class="eyebrow">History &amp; Culture</span>
   <h2>What we come from</h2>
@@ -1098,7 +1117,7 @@
     <p><strong>Gun Rights:</strong> We are entirely Pro-2A, with zero exceptions except for laws limiting non-citizens. We reject Virginia Governor Spanberger's unconstitutional gun control bills.</p>
     <p><strong>Religion:</strong> We are a Christian organization and view it as both a building block for Western civilization and the United States. We believe America is a Christian nation. Christian belief isn't required for membership, but accepting that we want to spread the Gospel is.</p>
     <div class="verse-with-cross">
-      <svg class="emblem-cross-small" viewBox="0 0 100 140" width="100" height="140"><use href="#emblem-cross-wood"/></svg>
+      <svg class="emblem-cross-small" viewBox="0 0 100 140" width="100" height="140" aria-hidden="true"><use href="#emblem-cross-wood"/></svg>
       <div class="verse-placeholder">
         &#8220;Blessed is the nation whose God is the Lord...&#8221;
         <span class="verse-ref">Psalm 33:12</span>
@@ -1190,19 +1209,38 @@
   </div>
 </footer>
 
-<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">&uarr;</button>
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
 
 <script>
   var toggle = document.getElementById('navToggle');
   var list = document.getElementById('navList');
-  toggle.addEventListener('click', function () {
+  function closeMobileNav() {
+    if (list.classList.contains('open')) {
+      list.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Menu';
+    }
+  }
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
     var open = list.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.textContent = open ? 'Close' : 'Menu';
+  });
+  document.addEventListener('click', function (e) {
+    if (list.classList.contains('open') && !list.contains(e.target) && e.target !== toggle) {
+      closeMobileNav();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMobileNav();
   });
 
   // Manual light/dark theme toggle
   var themeToggle = document.getElementById('themeToggle');
   var rootEl = document.documentElement;
+  var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  var THEME_COLORS = { dark: '#181713', light: '#eae3d2' };
   function currentTheme() {
     var explicit = rootEl.getAttribute('data-theme');
     if (explicit) return explicit;
@@ -1210,10 +1248,13 @@
   }
   function applyToggleState() {
     var isLight = currentTheme() === 'light';
+    var label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
     themeToggle.setAttribute('aria-pressed', String(isLight));
-    themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
     themeToggle.querySelector('.theme-icon-sun').style.display = isLight ? 'none' : 'block';
     themeToggle.querySelector('.theme-icon-moon').style.display = isLight ? 'block' : 'none';
+    if (themeColorMeta) themeColorMeta.setAttribute('content', THEME_COLORS[isLight ? 'light' : 'dark']);
   }
   applyToggleState();
   themeToggle.addEventListener('click', function () {
