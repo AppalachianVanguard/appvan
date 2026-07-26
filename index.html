@@ -62,7 +62,7 @@
       --text: #1c1b18;
       --text-muted: #2f4538;
       --text-eyebrow: #7a5a3c;
-      --accent: #c9a227;
+      --accent: #7d5f13;
       --line: rgba(28,27,24,0.14);
       --ridge-1: #8b968c;
       --ridge-2: #2f4538;
@@ -100,7 +100,7 @@
     --text: #1c1b18;
     --text-muted: #2f4538;
     --text-eyebrow: #7a5a3c;
-    --accent: #c9a227;
+    --accent: #7d5f13;
     --line: rgba(28,27,24,0.14);
     --ridge-1: #8b968c;
     --ridge-2: #2f4538;
@@ -697,6 +697,15 @@
     hyphens: none;
   }
 
+  @media (max-width: 600px) {
+    #positions .prose p {
+      text-align: left;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+    }
+  }
+
   /* ---------- FAQ accordion ---------- */
   .faq-layout {
     display: flex;
@@ -1023,7 +1032,7 @@
         </div>
       </div>
       <figure class="hero-figure">
-        <img src="assets/peace-in-union.jpg" alt="Painting of General Lee surrendering to General Grant at Appomattox Court House" loading="lazy" class="lightbox-trigger" width="610" height="470">
+        <img src="assets/peace-in-union.jpg" alt="Painting of General Lee surrendering to General Grant at Appomattox Court House" fetchpriority="high" class="lightbox-trigger" width="610" height="470">
         <figcaption>&#8220;Peace in Union,&#8221; Thomas Nast, 1895 &mdash; public domain</figcaption>
       </figure>
     </div>
