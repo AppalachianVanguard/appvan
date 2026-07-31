@@ -426,26 +426,23 @@
 
   .footer-fineprint { font-size: 9px; }
 
-  /* ---------- Footer flag mark ---------- */
-  .footer-flag-row {
+  /* ---------- Section heading flag mark ---------- */
+  .block-heading-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 14px;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
-  .footer-flag {
+  .heading-flag {
     display: block;
-    width: 34px;
+    width: 42px;
     height: auto;
     border-radius: 2px;
     border: 1px solid var(--line);
-    opacity: 0.88;
+    opacity: 0.92;
     flex-shrink: 0;
-  }
-
-  .footer-flag-row .footer-privacy {
-    margin-top: 0;
+    align-self: center;
   }
 
   /* ---------- Subtle site-wide paper grain ---------- */
@@ -497,7 +494,10 @@
 
 <section class="block" id="blog">
   <span class="eyebrow">Blog</span>
-  <h2>Notes &amp; Commentary</h2>
+  <div class="block-heading-row">
+    <h2>Notes &amp; Commentary</h2>
+    <img src="assets/betsy-ross-flag.png" alt="Betsy Ross American flag" class="heading-flag" width="42" height="22">
+  </div>
   <div class="prose">
     <p>Essays and commentary from Appalachian Vanguard contributors.</p>
     <p class="editorial-note">These posts reflect the views of their individual authors, offered as opinion and commentary, NOT official statements of the organization.</p>
@@ -535,10 +535,7 @@
 </main>
 
 <footer>
-  <div class="footer-flag-row">
-    <img src="assets/betsy-ross-flag.png" alt="Betsy Ross American flag" class="footer-flag" width="60" height="32">
-    <div class="footer-privacy footer-fineprint">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
-  </div>
+  <div class="footer-privacy footer-fineprint">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
 </footer>
 
 <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
