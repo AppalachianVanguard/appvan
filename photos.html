@@ -523,6 +523,52 @@
 
   .footer-fineprint { font-size: 9px; }
 
+  .verse-placeholder {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    border-left: 2px solid var(--text-eyebrow);
+    padding: 2px 0 2px 16px;
+    margin: 22px 0;
+  }
+
+  .verse-placeholder .verse-ref {
+    display: block;
+    font-style: normal;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+    margin-top: 6px;
+  }
+
+  .footer-verse {
+    font-style: italic;
+    border-left: none;
+    padding-left: 0;
+    margin: 14px 0 0;
+    font-size: 12px;
+  }
+  .footer-verse .verse-ref { margin-top: 4px; }
+
+  .footer-verse-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .footer-verse-row .footer-verse { margin: 0; }
+  .footer-verse-row .footer-tree { margin-top: 3px; }
+
+  .footer-tree {
+    width: 13px;
+    height: 13px;
+    display: block;
+    flex-shrink: 0;
+  }
+
   /* ---------- Subtle site-wide paper grain ---------- */
   body::after {
     content: "";
@@ -716,6 +762,13 @@
 
 <footer>
   <div class="footer-privacy footer-fineprint">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+  <div class="footer-verse-row">
+    <img src="assets/tree-icon.png" alt="" class="footer-tree">
+    <div class="verse-placeholder footer-verse">
+      &#8220;He has made everything beautiful in its time.&#8221;
+      <span class="verse-ref">Ecclesiastes 3:11</span>
+    </div>
+  </div>
 </footer>
 
 <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
