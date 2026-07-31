@@ -426,6 +426,28 @@
 
   .footer-fineprint { font-size: 9px; }
 
+  /* ---------- Footer flag mark ---------- */
+  .footer-flag-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .footer-flag {
+    display: block;
+    width: 34px;
+    height: auto;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    opacity: 0.88;
+    flex-shrink: 0;
+  }
+
+  .footer-flag-row .footer-privacy {
+    margin-top: 0;
+  }
+
   /* ---------- Subtle site-wide paper grain ---------- */
   body::after {
     content: "";
@@ -513,7 +535,10 @@
 </main>
 
 <footer>
-  <div class="footer-privacy footer-fineprint">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+  <div class="footer-flag-row">
+    <img src="assets/betsy-ross-flag.png" alt="Betsy Ross American flag" class="footer-flag" width="60" height="32">
+    <div class="footer-privacy footer-fineprint">No cookies. No visitor tracking beyond anonymous, aggregate page views.</div>
+  </div>
 </footer>
 
 <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
