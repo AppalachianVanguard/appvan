@@ -482,43 +482,33 @@
   </div>
 
   <!--
-    HOW TO ADD A BLOG POST:
-    1. Copy one entire <details class="blog-post">...</details> block
-       below (from <details to </details>).
-    2. Paste your copy inside .blog-post-list, ABOVE the most recent
-       existing post — newest post goes at the top.
-    3. Edit the date, title, byline (or delete the byline line to stay
-       anonymous, consistent with how the rest of the site handles
-       authorship), and the paragraphs of the article itself.
-    4. Add as many <p>...</p> paragraphs inside .blog-post-body as the
-       article needs.
-    5. Once you've added your first real post, delete the
-       "blog-placeholder" div below — that's just the "Coming soon"
-       filler shown while the blog is empty.
+    HOW TO ADD A BLOG POST (the easy way):
+    Every post lives in one plain-text-friendly file: posts.js.
+    You never have to touch this HTML file, and you never have to
+    write any HTML tags.
+
+    1. Open posts.js in any text editor (Notepad, TextEdit, VS Code —
+       anything works).
+    2. Copy one entire post block (from the opening { down to the
+       closing },) and paste it anywhere in the list — order doesn't
+       matter, posts are sorted newest-first automatically.
+    3. Fill in:
+         title  — the post's title
+         date   — "Month DD, YYYY"
+         author — optional; leave it as "" to stay anonymous
+         body   — just type or paste the article text. Leave a blank
+                  line between paragraphs, exactly like writing a
+                  normal email.
+    4. Save posts.js. That's the whole process — no copy-pasting
+       <p> tags, no HTML, nothing else to edit.
+
+    This is also exactly how to add a post a friend or co-member
+    emails you: paste their text straight into the body field as-is.
   -->
-  <div class="blog-post-list">
-
-    <!--
-    <details class="blog-post">
-      <summary>
-        <div class="blog-post-heading">
-          <span class="blog-post-date">Month DD, YYYY</span>
-          <h3 class="blog-post-title">Post Title Here</h3>
-        </div>
-        <span class="blog-post-icon">+</span>
-      </summary>
-      <div class="blog-post-body">
-        <p class="blog-post-byline">By Name (optional — leave out to stay anonymous)</p>
-        <p>First paragraph of the article goes here.</p>
-        <p>Second paragraph, and so on for as long as the piece runs.</p>
-      </div>
-    </details>
-    -->
-
+  <div class="blog-post-list" id="blogPostList">
     <div class="blog-placeholder" id="blogPlaceholder">
       No posts yet — check back soon.
     </div>
-
   </div>
 </section>
 
@@ -529,6 +519,8 @@
 </footer>
 
 <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
+
+<script src="posts.js"></script>
 
 <script>
   var toggle = document.getElementById('navToggle');
@@ -594,6 +586,70 @@
   backToTop.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // Build the blog post list from posts.js — nothing to edit here.
+  // Add/edit/remove posts by editing posts.js instead of this file.
+  (function () {
+    var container = document.getElementById('blogPostList');
+    if (!container || typeof blogPosts === 'undefined' || !blogPosts.length) return;
+
+    var placeholder = document.getElementById('blogPlaceholder');
+    if (placeholder) placeholder.remove();
+
+    var sorted = blogPosts.slice().sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+
+    sorted.forEach(function (post) {
+      var details = document.createElement('details');
+      details.className = 'blog-post';
+
+      var summary = document.createElement('summary');
+
+      var heading = document.createElement('div');
+      heading.className = 'blog-post-heading';
+
+      var dateEl = document.createElement('span');
+      dateEl.className = 'blog-post-date';
+      dateEl.textContent = post.date || '';
+
+      var titleEl = document.createElement('h3');
+      titleEl.className = 'blog-post-title';
+      titleEl.textContent = post.title || 'Untitled';
+
+      heading.appendChild(dateEl);
+      heading.appendChild(titleEl);
+
+      var icon = document.createElement('span');
+      icon.className = 'blog-post-icon';
+      icon.textContent = '+';
+
+      summary.appendChild(heading);
+      summary.appendChild(icon);
+
+      var body = document.createElement('div');
+      body.className = 'blog-post-body';
+
+      if (post.author) {
+        var byline = document.createElement('p');
+        byline.className = 'blog-post-byline';
+        byline.textContent = 'By ' + post.author;
+        body.appendChild(byline);
+      }
+
+      (post.body || '').split(/\n\s*\n/).forEach(function (para) {
+        var trimmed = para.trim();
+        if (!trimmed) return;
+        var p = document.createElement('p');
+        p.textContent = trimmed;
+        body.appendChild(p);
+      });
+
+      details.appendChild(summary);
+      details.appendChild(body);
+      container.appendChild(details);
+    });
+  })();
 </script>
 
 <script data-goatcounter="https://appva.goatcounter.com/count"
