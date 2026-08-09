@@ -178,6 +178,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
   }
 
   .wordmark {
@@ -200,6 +201,13 @@
     width: 20px;
     height: 20px;
     display: block;
+    flex-shrink: 0;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     flex-shrink: 0;
   }
 
@@ -927,12 +935,14 @@
 
 <header>
   <div class="nav-inner">
-    <a class="wordmark" href="#"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
-    <div class="nav-controls">
+    <div class="nav-left">
+      <a class="wordmark" href="#"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
         <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
         <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.7A8 8 0 1 1 9.3 4a6.4 6.4 0 0 0 10.7 10.7z"/></svg>
       </button>
+    </div>
+    <div class="nav-controls">
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
       <nav>
         <ul id="navList">
@@ -943,7 +953,7 @@
           <li><a href="photos.html">Photos</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="join.html">Join</a></li>
         </ul>
       </nav>
     </div>
@@ -1045,7 +1055,6 @@
           <svg class="emblem hero-eagle" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true"><use href="#emblem-stars-circle"/></svg>
         </div>
         <p class="lede">Appalachian Vanguard is a local effort to preserve our region's culture and to protect its land, both physically and politically.</p>
-        <a class="hero-cta" href="#contact">Get Involved &rarr;</a>
         <div class="verse-placeholder hero-verse">
           &#8220;For freedom Christ has set us free; stand firm therefore...&#8221;
           <span class="verse-ref">Galatians 5:1</span>
@@ -1186,13 +1195,13 @@
   <div class="quill-divider">
     <img src="assets/tree-icon.png" alt="" class="contact-tree">
   </div>
-  <span class="eyebrow">Contact</span>
-  <h2>Get in touch</h2>
+  <span class="eyebrow">Get Involved</span>
+  <h2>Ready to join us?</h2>
   <div class="prose">
-    <p>Have a question, a story to share, or want to get involved? Reach out by email — we read everything.</p>
+    <p>If you're interested in becoming part of Appalachian Vanguard, head over to the Join page to learn more and apply.</p>
   </div>
   <div class="contact-box">
-    <a class="contact-email" href="mailto:appvan@proton.me">appvan@proton.me</a>
+    <a class="contact-email" href="join.html">Visit the Join page &rarr;</a>
   </div>
 </section>
 
