@@ -158,6 +158,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
   }
 
   .wordmark {
@@ -180,6 +181,13 @@
     width: 20px;
     height: 20px;
     display: block;
+    flex-shrink: 0;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     flex-shrink: 0;
   }
 
@@ -471,12 +479,14 @@
 
 <header>
   <div class="nav-inner">
-    <a class="wordmark" href="index.html"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
-    <div class="nav-controls">
+    <div class="nav-left">
+      <a class="wordmark" href="index.html"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
         <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
         <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.7A8 8 0 1 1 9.3 4a6.4 6.4 0 0 0 10.7 10.7z"/></svg>
       </button>
+    </div>
+    <div class="nav-controls">
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
       <nav>
         <ul id="navList">
@@ -487,7 +497,7 @@
           <li><a href="photos.html">Photos</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="resources.html" aria-current="page">Resources</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="join.html">Join</a></li>
         </ul>
       </nav>
     </div>
