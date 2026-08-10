@@ -3,20 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark light">
+<meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#181713">
 <title>Appalachian Vanguard</title>
 <meta name="description" content="A local effort to preserve Appalachian culture and to protect its land, both physically and politically.">
-
-<!-- Applies a saved light/dark preference before first paint, to avoid a flash of the wrong theme -->
-<script>
-(function () {
-  try {
-    var t = localStorage.getItem('av-theme');
-    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-  } catch (e) {}
-})();
-</script>
 
 <!-- Social share preview (shows when the link is texted, posted, or scanned) -->
 <meta property="og:title" content="Appalachian Vanguard">
@@ -36,79 +26,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IM+Fell+English:ital@0;1&family=Source+Serif+4:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    color-scheme: dark light;
+    color-scheme: dark;
     --bg: #181713;
     --bg-alt: #221f1a;
     --surface: #33523f;
     --surface-hover: #3f6350;
     --text: #ece4d2;
     --text-muted: #b7c2b8;
-    --text-eyebrow: #d9a94c;
-    --accent: #d9b23c;
+    --text-eyebrow: #7a9c68;
+    --accent: #8fc478;
     --line: rgba(255,255,255,0.14);
     --ridge-1: #4b5a4f;
     --ridge-2: #33503e;
     --ridge-3: #22362a;
-    --placeholder-bg: rgba(217,178,60,0.12);
-    --placeholder-border: #b98a4a;
+    --placeholder-bg: rgba(143,196,120,0.12);
+    --placeholder-border: #6f8f57;
     --on-surface: #f2ead9;
-  }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #eae3d2;
-      --bg-alt: #d9d0ba;
-      --surface: #23362a;
-      --surface-hover: #2f4538;
-      --text: #1c1b18;
-      --text-muted: #2f4538;
-      --text-eyebrow: #7a5a3c;
-      --accent: #7d5f13;
-      --line: rgba(28,27,24,0.14);
-      --ridge-1: #8b968c;
-      --ridge-2: #2f4538;
-      --ridge-3: #23362a;
-      --placeholder-bg: rgba(201,162,39,0.14);
-      --placeholder-border: #7a5a3c;
-      --on-surface: #eae3d2;
-    }
-  }
-
-  /* Manual theme toggle overrides — take priority over the system preference above */
-  :root[data-theme="dark"] {
-    --bg: #181713;
-    --bg-alt: #221f1a;
-    --surface: #33523f;
-    --surface-hover: #3f6350;
-    --text: #ece4d2;
-    --text-muted: #b7c2b8;
-    --text-eyebrow: #d9a94c;
-    --accent: #d9b23c;
-    --line: rgba(255,255,255,0.14);
-    --ridge-1: #4b5a4f;
-    --ridge-2: #33503e;
-    --ridge-3: #22362a;
-    --placeholder-bg: rgba(217,178,60,0.12);
-    --placeholder-border: #b98a4a;
-    --on-surface: #f2ead9;
-  }
-
-  :root[data-theme="light"] {
-    --bg: #eae3d2;
-    --bg-alt: #d9d0ba;
-    --surface: #23362a;
-    --surface-hover: #2f4538;
-    --text: #1c1b18;
-    --text-muted: #2f4538;
-    --text-eyebrow: #7a5a3c;
-    --accent: #7d5f13;
-    --line: rgba(28,27,24,0.14);
-    --ridge-1: #8b968c;
-    --ridge-2: #2f4538;
-    --ridge-3: #23362a;
-    --placeholder-bg: rgba(201,162,39,0.14);
-    --placeholder-border: #7a5a3c;
-    --on-surface: #eae3d2;
   }
 
   * { box-sizing: border-box; }
@@ -204,13 +137,6 @@
     flex-shrink: 0;
   }
 
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
-  }
-
   .footer-brand {
     display: inline-flex;
     align-items: center;
@@ -258,33 +184,6 @@
     align-items: center;
     gap: 10px;
   }
-
-  .theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    padding: 0;
-    flex-shrink: 0;
-    background: none;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    color: var(--text);
-    cursor: pointer;
-  }
-  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
-  .theme-icon {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .theme-icon-sun { display: block; }
-  .theme-icon-moon { display: none; fill: currentColor; stroke: none; }
 
   .back-to-top {
     position: fixed;
@@ -951,13 +850,7 @@
 
 <header>
   <div class="nav-inner">
-    <div class="nav-left">
-      <a class="wordmark" href="#"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
-        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
-        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.7A8 8 0 1 1 9.3 4a6.4 6.4 0 0 0 10.7 10.7z"/></svg>
-      </button>
-    </div>
+    <a class="wordmark" href="#"><img src="assets/tree-icon.png" alt="" class="wordmark-tree">Appalachian Vanguard</a>
     <div class="nav-controls">
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
       <nav>
@@ -1180,34 +1073,6 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeMobileNav();
-  });
-
-  // Manual light/dark theme toggle
-  var themeToggle = document.getElementById('themeToggle');
-  var rootEl = document.documentElement;
-  var themeColorMeta = document.querySelector('meta[name="theme-color"]');
-  var THEME_COLORS = { dark: '#181713', light: '#eae3d2' };
-  function currentTheme() {
-    var explicit = rootEl.getAttribute('data-theme');
-    if (explicit) return explicit;
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  }
-  function applyToggleState() {
-    var isLight = currentTheme() === 'light';
-    var label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
-    themeToggle.setAttribute('aria-pressed', String(isLight));
-    themeToggle.setAttribute('aria-label', label);
-    themeToggle.setAttribute('title', label);
-    themeToggle.querySelector('.theme-icon-sun').style.display = isLight ? 'none' : 'block';
-    themeToggle.querySelector('.theme-icon-moon').style.display = isLight ? 'block' : 'none';
-    if (themeColorMeta) themeColorMeta.setAttribute('content', THEME_COLORS[isLight ? 'light' : 'dark']);
-  }
-  applyToggleState();
-  themeToggle.addEventListener('click', function () {
-    var next = currentTheme() === 'light' ? 'dark' : 'light';
-    rootEl.setAttribute('data-theme', next);
-    try { localStorage.setItem('av-theme', next); } catch (e) {}
-    applyToggleState();
   });
 
   // Back-to-top button
