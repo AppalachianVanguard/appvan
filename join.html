@@ -378,6 +378,25 @@
     max-width: 18ch;
   }
 
+  .join-heading-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .join-heading-row h1 { margin-top: 0; }
+
+  .join-icon {
+    flex-shrink: 0;
+    margin-top: 8px;
+    color: var(--accent);
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+  }
+  @media (max-width: 640px) {
+    .join-icon { width: 48px; height: 32px; margin-top: 2px; }
+  }
+
   .join-intro .lede {
     font-size: 19px;
     color: var(--text-muted);
@@ -535,6 +554,11 @@
       <path d="M106 120 L104 154 L110 130 Z" fill="currentColor"/>
       <path d="M112 118 L118 150 L110 128 Z" fill="currentColor"/>
     </symbol>
+
+    <symbol id="icon-mountain" viewBox="0 0 24 16">
+      <path d="M0,16 L7,3 L13,16 Z" fill="currentColor"/>
+      <path d="M11,16 L17,6 L24,16 Z" fill="currentColor" opacity="0.75"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -563,7 +587,10 @@
 
 <div class="join-intro">
   <span class="eyebrow">Membership</span>
-  <h1>Join Appalachian Vanguard</h1>
+  <div class="join-heading-row">
+    <h1>Join Appalachian Vanguard</h1>
+    <svg class="join-icon" viewBox="0 0 24 16" width="72" height="48" aria-hidden="true"><use href="#icon-mountain"/></svg>
+  </div>
   <p class="lede">Membership is limited and reviewed by hand. Fill out the form below to start the process — we'll follow up by email.</p>
 </div>
 
