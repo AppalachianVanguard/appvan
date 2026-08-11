@@ -397,6 +397,16 @@
     .join-icon { width: 48px; height: 32px; margin-top: 2px; }
   }
 
+  .join-star-ring {
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: var(--accent);
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+  }
+  @media (max-width: 640px) {
+    .join-star-ring { width: 52px; height: 52px; margin-top: 2px; }
+  }
+
   .join-intro .lede {
     font-size: 19px;
     color: var(--text-muted);
@@ -559,6 +569,24 @@
       <path d="M0,16 L7,3 L13,16 Z" fill="currentColor"/>
       <path d="M11,16 L17,6 L24,16 Z" fill="currentColor" opacity="0.75"/>
     </symbol>
+
+    <path id="star-shape" d="M0,-10 L2.25,-3.09 L9.51,-3.09 L3.63,1.18 L5.88,8.09 L0,3.82 L-5.88,8.09 L-3.63,1.18 L-9.51,-3.09 L-2.25,-3.09 Z" fill="currentColor"/>
+
+    <symbol id="emblem-stars-circle" viewBox="0 0 100 100">
+      <use href="#star-shape" transform="translate(50,18) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(64.86,21.66) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(76.35,31.83) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(81.77,46.14) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(79.92,61.35) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(71.20,73.97) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(57.57,81.09) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(42.43,81.09) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(28.80,73.97) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(20.08,61.35) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(18.23,46.14) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(23.65,31.83) scale(0.55)"/>
+      <use href="#star-shape" transform="translate(35.14,21.66) scale(0.55)"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -588,6 +616,7 @@
 <div class="join-intro">
   <span class="eyebrow">Membership</span>
   <div class="join-heading-row">
+    <svg class="join-star-ring" viewBox="0 0 100 100" width="80" height="80" aria-hidden="true"><use href="#emblem-stars-circle"/></svg>
     <h1>Join Appalachian Vanguard</h1>
     <svg class="join-icon" viewBox="0 0 24 16" width="72" height="48" aria-hidden="true"><use href="#icon-mountain"/></svg>
   </div>
