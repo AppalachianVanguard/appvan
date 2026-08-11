@@ -444,7 +444,7 @@
   .mission-layout {
     display: flex;
     gap: 40px;
-    align-items: flex-end;
+    align-items: stretch;
     flex-wrap: wrap;
   }
 
@@ -455,6 +455,8 @@
     width: 420px;
     max-width: 100%;
     margin-top: 24px;
+    display: flex;
+    flex-direction: column;
   }
 
   .mission-image img {
@@ -472,7 +474,7 @@
     border-radius: 0;
     width: 22%;
     max-width: 110px;
-    margin: 24px auto 0;
+    margin: auto auto 0;
   }
 
   @media (max-width: 640px) {
