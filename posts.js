@@ -48,6 +48,7 @@ const blogPosts = [
     From this symbolism and imagery, the Founders show us who built this nation, why this political experiment began, and what it means to be an American. An American was the very stock of people that settled and built up this barred and forested land, which were the Celtic, Anglo-Saxon, and German stock of Europeans. This expanded through the U.S. Naturalization Act of 1970, making all "free White men of good character" eliglble to immigrate to the United States from Europe. With this, the only people that could vote from 1776 to 1870, were free White men that were married, owned property, and in many cases, also attended a state church. This practice of citizenship and voting limitation ended 104 years after the founding. This is only viewed controversial today because our nation is a European product, built and represented by European peoples. Like China, Israel, Japan, Kuwait, South Korea, Qatar, Iran and almost every single previous nation that has ever existed in the past has believed in defending and representing their nations founding ideals and religion, and the United States of America is no different. A group of people wanting to protect their culture and posterity should NEVER have controversial labels thrown at them, as that should be viewed as an insult against God, His creation, and intelligent design.`
   },
 
+  {
     title: "Birthright Citizenship",
     date: "August 11, 2026",
     author: "AV1",
