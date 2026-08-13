@@ -538,6 +538,21 @@
     color: var(--text-muted);
     max-width: 52ch;
   }
+
+  .inapp-notice {
+    display: none;
+    margin-top: 18px;
+    max-width: 52ch;
+    padding: 16px 18px;
+    background: var(--placeholder-bg);
+    border: 1px dashed var(--placeholder-border);
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .inapp-notice.is-visible { display: block; }
 </style>
 </head>
 <body>
@@ -546,25 +561,6 @@
 
 <svg style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
   <defs>
-    <symbol id="emblem-eagle" viewBox="0 0 220 170">
-      <path d="M100 62 C94 58 92 50 96 42 C100 50 108 50 112 42 C116 50 114 58 108 62 C118 70 122 92 116 118 C113 132 107 132 104 118 C98 92 102 70 100 62 Z" fill="currentColor"/>
-      <circle cx="110" cy="34" r="12" fill="currentColor"/>
-      <path d="M120 32 L136 28 L122 40 Z" fill="currentColor"/>
-      <path d="M98 60 C70 55 40 48 14 34 C40 46 66 56 96 68 Z" fill="currentColor"/>
-      <ellipse cx="70" cy="50" rx="20" ry="5.5" transform="rotate(8 70 50)" fill="currentColor"/>
-      <ellipse cx="52" cy="44" rx="24" ry="5.5" transform="rotate(14 52 44)" fill="currentColor"/>
-      <ellipse cx="33" cy="38" rx="26" ry="5.5" transform="rotate(20 33 38)" fill="currentColor"/>
-      <ellipse cx="15" cy="33" rx="24" ry="5" transform="rotate(26 15 33)" fill="currentColor"/>
-      <path d="M122 60 C150 55 180 48 206 34 C180 46 154 56 124 68 Z" fill="currentColor"/>
-      <ellipse cx="150" cy="50" rx="20" ry="5.5" transform="rotate(-8 150 50)" fill="currentColor"/>
-      <ellipse cx="168" cy="44" rx="24" ry="5.5" transform="rotate(-14 168 44)" fill="currentColor"/>
-      <ellipse cx="187" cy="38" rx="26" ry="5.5" transform="rotate(-20 187 38)" fill="currentColor"/>
-      <ellipse cx="205" cy="33" rx="24" ry="5" transform="rotate(-26 205 33)" fill="currentColor"/>
-      <path d="M100 118 L92 150 L102 128 Z" fill="currentColor"/>
-      <path d="M106 120 L104 154 L110 130 Z" fill="currentColor"/>
-      <path d="M112 118 L118 150 L110 128 Z" fill="currentColor"/>
-    </symbol>
-
     <symbol id="icon-mountain" viewBox="0 0 24 16">
       <path d="M0,16 L7,3 L13,16 Z" fill="currentColor"/>
       <path d="M11,16 L17,6 L24,16 Z" fill="currentColor" opacity="0.75"/>
@@ -724,6 +720,9 @@
 
       <button class="join-submit" type="submit">Submit Application</button>
       <p class="submit-note">This opens your email app with your answers already filled in, addressed to appvan@proton.me — nothing is collected or stored on this page itself. Review it and hit send from there.</p>
+      <div class="inapp-notice" id="inAppNotice">
+        This page may have opened inside another app's built-in browser, which sometimes can't hand off to your email app. Look for a &ldquo;&bull;&bull;&bull;&rdquo; or share icon at the top of the screen and choose &ldquo;Open in Safari&rdquo; or &ldquo;Open in Chrome,&rdquo; then try submitting again.
+      </div>
     </div>
 
   </form>
@@ -834,6 +833,18 @@
       );
       window.location.href = 'mailto:appvan@proton.me?subject=' + subject + '&body=' + body;
     });
+  })();
+
+  // Flag likely in-app browsers (Instagram, Facebook, TikTok, etc.) that often
+  // can't hand mailto: links off to a real email app, and surface a workaround
+  // near the submit button so a stuck applicant knows why nothing happened.
+  (function () {
+    var ua = navigator.userAgent || '';
+    var isInAppBrowser = /FBAN|FBAV|Instagram|Line\/|MicroMessenger|TikTok|BytedanceWebview|Snapchat/i.test(ua);
+    if (isInAppBrowser) {
+      var notice = document.getElementById('inAppNotice');
+      if (notice) notice.classList.add('is-visible');
+    }
   })();
 </script>
 
